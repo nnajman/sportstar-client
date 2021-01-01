@@ -1,0 +1,48 @@
+.toolbar {
+    margin-right: 20px;
+}
+
+.toolbar-icon {
+    color: white;
+}
+
+.site-name {
+    color: white;
+    font-size: 30px;
+    font-family: "Roboto";
+    letter-spacing: 2px;
+    font-weight: 900;
+}
+
+.mat-toolbar {
+    background: #2d2d2d;
+}
+
+.categories {
+    margin-left: 5%;
+    height: 100%;
+}
+
+.category {
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-family: "Roboto";
+    height: 100%;
+    line-height: 60px;
+    border-right: 1px solid #525050;
+    border-left: 1px solid #525050;
+    width: 115px;
+}
+
+.category:hover {
+    background-color: #666666;
+}
+
+mat-sidenav {
+    width: 250px;
+}
+
+.sidenav-category {
+    font-size: 25px;
+    height: 50px;
+}
