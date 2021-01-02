@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <div class="navigation">
+        <a style="color: black;" routerLink="/">Home</a>
+        <span style="font-size: 12px;" aria-hidden="true">></span>
+        <a style="color: black;" routerLink="/{{gender}}">{{gender}}</a>
+        <span style="font-size: 12px;" aria-hidden="true">></span>
+        <span style="color: #999;">{{name}}</span>
+    </div>
+    <hr class="line">
+    <div class="product-container">
+        <img class="product-image"
+            src="https://images.asos-media.com/products/adidas-running-1-4-zip-top-in-black-and-grey/21288082-1-black?$n_750w$&wid=714&fit=constrain">
+        <div class="product-details">
+            <div class="product-name-container">
+                <span>{{name}}</span>
+            </div>
+            <div class="product-price-container">
+                <span>315.00 ILS</span>
+            </div>
+            <div class="product-color-container">
+                <span><b>COLOR:  </b></span>
+                <span>Black</span>
+            </div>
+            <div class="product-size-container">
+                <span class="size-text">SIZE:</span>
+                <mat-form-field appearance="fill" class="size-select">
+                    <mat-label>Choose an option</mat-label>
+                    <mat-select>
+                      <mat-option value="option1">Option 1</mat-option>
+                      <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+                      <mat-option value="option3">Option 3</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div class="add-item">
+                <button class="add-item-button">Add to bag</button>
+            </div>
+        </div>
+    </div>
+</div>
