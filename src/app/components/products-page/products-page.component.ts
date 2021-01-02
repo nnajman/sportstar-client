@@ -11,16 +11,20 @@ export class ProductsPageComponent implements OnInit {
 
   constructor() { }
 
+  ngOnInit(): void {
+  }
+
   @HostListener('window:scroll', ['$event']) // for window scroll events
-  onScroll(event: any) {
+
+  /**
+   * Handles scroll event
+   */
+  public onScroll() {
     let pos = (document.documentElement.scrollTop || document.body.scrollTop) + 
       document.documentElement.offsetHeight;
     const toolbar = window.document.getElementById('toolbar')!;
     toolbar.style.zIndex = pos < this.currScrollPos ? '1000' : '0';
+    toolbar.style.position = pos < this.currScrollPos ? 'sticky' : 'inherit';
     this.currScrollPos = pos;
   }
-
-  ngOnInit(): void {
-  }
-
 }
