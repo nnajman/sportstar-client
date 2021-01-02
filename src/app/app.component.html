@@ -1,7 +1,7 @@
 <div>
-  <mat-toolbar color="primary">
-    <div fxShow.lt-md="true" fxHide="true" class="toolbar">
-      <a href="#" (click)="sidenav.toggle()"><i class="fas fa-bars toolbar-icon"></i></a>
+  <mat-toolbar color="primary" id="toolbar">
+    <div fxShow.lt-md="true" fxHide="true" class="hamburger">
+      <a href="#" (click)="sidenav.toggle()"><i class="fas fa-bars hamburger-icon"></i></a>
     </div>
     <a class="site-name" routerLink="/" mat-button>Sport Star</a>
     <div class="categories" fxShow="true" fxHide.lt-md="true">

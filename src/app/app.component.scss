@@ -1,8 +1,14 @@
-.toolbar {
+mat-toolbar {
+    position: sticky;
+    top: 0; 
+    z-index: 1000; 
+}
+
+.hamburger {
     margin-right: 20px;
 }
 
-.toolbar-icon {
+.hamburger-icon {
     color: white;
 }
 
@@ -21,7 +27,7 @@
 }
 
 .categories {
-    margin-left: 5%;
+    margin-left: 2%;
     height: 100%;
 }
 
