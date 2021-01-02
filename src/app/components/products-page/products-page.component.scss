@@ -1,0 +1,47 @@
+.product {
+    text-align: center;
+    margin-bottom: 5%;
+    cursor: pointer;
+}
+
+.product-image {
+    height: 389px;
+    width: 303px;
+}
+
+.product-description {
+    width: 303px;
+    margin: auto;
+    text-align: start;
+    font-size: 14px;
+    // letter-spacing: 1px;
+    letter-spacing: .5px;
+    color: #2d2d2d;
+    font-family: 'futura-pt,sans-serif';
+}
+
+.product-price {
+    font-family: 'futura-pt,sans-serif';
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: .8px;
+    color: #666;
+    text-align: start;
+    width: 303px;
+    margin: auto;
+}
+
+@media screen and (max-width: 992px) {
+    .product-image {
+        height: 302px;
+        width: 237px;
+    }
+
+    .product-description {
+        width: 237px;
+    }
+
+    .product-price {
+        width: 237px;
+    }
+}

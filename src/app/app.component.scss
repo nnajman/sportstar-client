@@ -1,0 +1,88 @@
+mat-toolbar {
+    position: sticky;
+    top: 0; 
+    z-index: 1000; 
+}
+
+.hamburger {
+    margin-right: 20px;
+}
+
+.hamburger-icon {
+    color: white;
+}
+
+.site-name {
+    color: white;
+    font-size: 30px;
+    font-family: "Roboto";
+    letter-spacing: 2px;
+    font-weight: 900;
+    text-decoration: none;
+    outline: none;
+}
+
+.mat-toolbar {
+    background: #2d2d2d;
+}
+
+.categories {
+    margin-left: 2%;
+    height: 100%;
+}
+
+.category {
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-family: "Roboto";
+    height: 100%;
+    line-height: 60px;
+    border-right: 1px solid #525050;
+    border-left: 1px solid #525050;
+    width: 115px;
+    text-decoration: none;
+}
+
+.category:hover {
+    background-color: #666666;
+    color: white;
+    text-decoration: none;
+}
+
+.category:focus {
+    background-color: #666666;
+    color: white;
+}
+
+.shopping-bag-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+}
+
+.shopping-bag {
+    font-size: 20px;
+}
+
+.shopping-bag:hover {
+    outline: none;
+    color: white;
+}
+
+.shopping-bag:focus {
+    color: white;
+    outline: none;
+}
+
+mat-sidenav {
+    width: 250px;
+}
+
+.sidenav-category {
+    font-size: 25px;
+    height: 50px;
+}
