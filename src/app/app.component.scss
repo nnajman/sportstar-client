@@ -12,6 +12,8 @@
     font-family: "Roboto";
     letter-spacing: 2px;
     font-weight: 900;
+    text-decoration: none;
+    outline: none;
 }
 
 .mat-toolbar {
@@ -32,10 +34,42 @@
     border-right: 1px solid #525050;
     border-left: 1px solid #525050;
     width: 115px;
+    text-decoration: none;
 }
 
 .category:hover {
     background-color: #666666;
+    color: white;
+    text-decoration: none;
+}
+
+.category:focus {
+    background-color: #666666;
+    color: white;
+}
+
+.shopping-bag-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+}
+
+.shopping-bag {
+    font-size: 20px;
+}
+
+.shopping-bag:hover {
+    outline: none;
+    color: white;
+}
+
+.shopping-bag:focus {
+    color: white;
+    outline: none;
 }
 
 mat-sidenav {

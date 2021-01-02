@@ -3,22 +3,23 @@
     <div fxShow.lt-md="true" fxHide="true" class="toolbar">
       <a href="#" (click)="sidenav.toggle()"><i class="fas fa-bars toolbar-icon"></i></a>
     </div>
-    <span class="site-name">Sport Star</span>
-
-    <span class="example-spacer"></span>
-
+    <a class="site-name" routerLink="/" mat-button>Sport Star</a>
     <div class="categories" fxShow="true" fxHide.lt-md="true">
-      <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-      <a class="category" href="#" mat-button>Men</a>
-      <a class="category" href="#" mat-button>Women</a>
+      <a class="category" routerLink="/men" mat-button>Men</a>
+      <a class="category" routerLink="/women" mat-button>Women</a>
+    </div>
+    <div class="shopping-bag-container">
+      <a class="shopping-bag" routerLink="/shopping-bag" mat-button>
+        <i class="fas fa-shopping-bag"></i>
+      </a>
     </div>
   </mat-toolbar>
 
   <mat-sidenav-container fxFlexFill class="example-container">
     <mat-sidenav #sidenav fxLayout="column">
       <div fxLayout="column">
-        <a class="sidenav-category" href="#" mat-button>Men</a>
-        <a class="sidenav-category" href="#" mat-button>Women</a>
+        <a class="sidenav-category" routerLink="/men" mat-button>Men</a>
+        <a class="sidenav-category" routerLink="/women" mat-button>Women</a>
       </div>
     </mat-sidenav>
     <router-outlet></router-outlet>
