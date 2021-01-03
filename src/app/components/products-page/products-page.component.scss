@@ -1,3 +1,16 @@
+.navigation {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.navigation > * {
+    margin-right: 2%;
+}
+
+.line {
+    margin-top: 0;
+}
+
 .product {
     text-align: center;
     margin-bottom: 5%;
@@ -25,7 +38,7 @@
     font-weight: 700;
     font-size: 14px;
     letter-spacing: .8px;
-    color: #666;
+    color: #d01345;
     text-align: start;
     width: 303px;
     margin: auto;
