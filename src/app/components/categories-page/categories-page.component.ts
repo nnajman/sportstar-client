@@ -8,7 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CategoriesPageComponent implements OnInit {
   public gender: string = "";
-  public background = 'https://content.asos-media.com/-/media/homepages/unisex/homepages/2020/12-dec/xmas-sale/global/ww_desk_1440x664_blue.jpg';
+  public background = 'https://cdn.dynamicyield.com/api/8773836/images/2a56a134d1b57__LOBBYWomen_Slide.jpg';
+  // public background = 'https://static.bershka.net/4/static/itxwebstandard/images/home/2020/1230/D_slide_woman_novedades_-1.jpg?20210104022023';
   public categories = [{name: 'TOPS', imageUrl: "https://images.asos-media.com/products/missguided-ruched-body-in-camel/21577362-1-camel?$XXL$&wid=513&fit=constrain&hei=236&wid=185&bgc=000000"},
                        {name: 'JEANS', imageUrl: "https://images.asos-media.com/products/asos-design-high-rise-stretch-slim-straight-leg-jeans-in-brightwash/20760525-1-brightwash?$XXL$&wid=513&fit=constrain&hei=236&wid=185&bgc=000000"},
                        {name: 'COATS & JACKETS', imageUrl: "https://images.asos-media.com/products/asos-design-borg-collared-oversized-parka-in-camel/20072839-1-camel?$XXL$&wid=513&fit=constrain&hei=236&wid=185&bgc=000000"},
@@ -23,8 +24,7 @@ export class CategoriesPageComponent implements OnInit {
       this.gender = data.gender;
 
       if (this.gender === 'Men') {
-        this.background = 'https://content.asos-media.com/-/media/homepages/unisex/homepages/2020/12-dec/xmas-sale/global/mw_desk_1440x664_blue.jpg';
-        // this.background = 'https://content.asos-media.com/-/media/homepages/unisex/homepages/2020/12-dec/xmas-sale/global/mw_desk_1440x664_green.jpg';
+        this.background = 'https://cdn.dynamicyield.com/api/8773836/images/337d837469d04__LOBBYMen_Slide.jpg';
         this.categories = [{name: 'JACKETS & COATS', imageUrl: "https://images.asos-media.com/products/brave-soul-padded-hooded-longline-jacket-in-black/22607484-1-black?$XXL$&wid=513&fit=constrain&hei=236&wid=185&bgc=000000"},
         {name: 'JEANS', imageUrl: "https://images.asos-media.com/products/bolongaro-trevor-skinny-jeans-in-dark-indigo/21425673-1-blue?$XXL$&wid=513&fit=constrain&hei=236&wid=185&bgc=000000"},
         {name: 'SHOES & SNEAKERS', imageUrl: "https://images.asos-media.com/products/adidas-originals-gazelle-vintage-trainers-in-green-suede/22158521-1-green?$XXL$&wid=513&fit=constrain&hei=236&wid=185&bgc=000000"},
