@@ -11,9 +11,17 @@ export class ProductsPageComponent implements OnInit {
   public gender: string = "";
   public category: string = "";
   private currScrollPos = 0;
+  public products = [{ name: 'adidas Originals Handball Spezial trainers in blue with gum sole', price: 315.00, imageUrl: 'https://images.asos-media.com/products/adidas-running-1-4-zip-top-in-black-and-grey/21288082-1-black?$n_750w$&wid=714&fit=constrain' },
+  { name: 'adidas Originals Handball Spezial trainers in blue with gum sole', price: 315.00, imageUrl: 'https://images.asos-media.com/products/adidas-running-1-4-zip-top-in-black-and-grey/21288082-1-black?$n_750w$&wid=714&fit=constrain' },
+  { name: 'adidas Originals Handball Spezial trainers in blue with gum sole', price: 315.00, imageUrl: 'https://images.asos-media.com/products/adidas-running-1-4-zip-top-in-black-and-grey/21288082-1-black?$n_750w$&wid=714&fit=constrain' },
+  { name: 'adidas Originals Handball Spezial trainers in blue with gum sole', price: 315.00, imageUrl: 'https://images.asos-media.com/products/adidas-running-1-4-zip-top-in-black-and-grey/21288082-1-black?$n_750w$&wid=714&fit=constrain' },
+  { name: 'adidas Originals Handball Spezial trainers in blue with gum sole', price: 315.00, imageUrl: 'https://images.asos-media.com/products/adidas-running-1-4-zip-top-in-black-and-grey/21288082-1-black?$n_750w$&wid=714&fit=constrain' },
+  { name: 'adidas Originals Handball Spezial trainers in blue with gum sole', price: 315.00, imageUrl: 'https://images.asos-media.com/products/adidas-running-1-4-zip-top-in-black-and-grey/21288082-1-black?$n_750w$&wid=714&fit=constrain' },
+  { name: 'adidas Originals Handball Spezial trainers in blue with gum sole', price: 315.00, imageUrl: 'https://images.asos-media.com/products/adidas-running-1-4-zip-top-in-black-and-grey/21288082-1-black?$n_750w$&wid=714&fit=constrain' },
+  { name: 'adidas Originals Handball Spezial trainers in blue with gum sole', price: 315.00, imageUrl: 'https://images.asos-media.com/products/adidas-running-1-4-zip-top-in-black-and-grey/21288082-1-black?$n_750w$&wid=714&fit=constrain' }];
 
   constructor(private route: ActivatedRoute,
-              private router: Router) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -28,7 +36,7 @@ export class ProductsPageComponent implements OnInit {
    * Handles scroll event
    */
   public onScroll() {
-    let pos = (document.documentElement.scrollTop || document.body.scrollTop) + 
+    let pos = (document.documentElement.scrollTop || document.body.scrollTop) +
       document.documentElement.offsetHeight;
     const toolbar = window.document.getElementById('toolbar')!;
     toolbar.style.zIndex = pos < this.currScrollPos ? '1000' : '0';
@@ -37,6 +45,6 @@ export class ProductsPageComponent implements OnInit {
   }
 
   public productClicked(name: string) {
-    this.router.navigate(['product-details', {gender: this.gender, category: this.category, name}]);
+    this.router.navigate(['product-details', { gender: this.gender, category: this.category, name }]);
   }
 }

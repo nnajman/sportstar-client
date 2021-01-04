@@ -1,11 +1,7 @@
 <div class="page-container">
     <img class="background" src='{{background}}'>
     <div class="categories-container">
-        <a *ngFor="let category of categories" class="category" (click)="categoryClicked(category.text)">
-            <img src='{{category.url}}' class="category-image">
-            <div class="text-container">
-                <span>{{category.text}}</span>
-            </div>
-        </a>
+        <category *ngFor="let category of categories" class="category" (click)="categoryClicked(category.name)"
+            [name]="category.name" [imageUrl]="category.imageUrl"></category>
     </div>
 </div>
