@@ -1,5 +1,15 @@
 .name-container {
     background-color: white;
-    color: black;
     text-align: center;
+    height: 50px;
+    display: flex;
+}
+
+.name {
+    margin: auto;
+    font-family: "Roboto";
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: black;
+    font-size: 13px;
 }

@@ -2,6 +2,10 @@
     overflow: hidden;
 }
 
+.background {
+    height: 715px;
+}
+
 .categories-container {
     position: absolute;
     top: calc(50% - 90px);
@@ -12,4 +16,9 @@
 
 .category {
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.category:hover {
+    transform: scale(1.2);
 }
