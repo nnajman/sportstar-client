@@ -9,14 +9,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProductsPageComponent implements OnInit {
 
   public gender: string = "";
+  public category: string = "";
   private currScrollPos = 0;
 
   constructor(private route: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit(): void {
-    this.route.data.subscribe(data => {
-      this.gender = data.gender;
+    this.route.queryParams.subscribe(params => {
+      this.gender = params.gender;
+      this.category = params.category;
     });
   };
 
@@ -35,7 +37,6 @@ export class ProductsPageComponent implements OnInit {
   }
 
   public productClicked(name: string) {
-    console.log(name);
-    this.router.navigate(['product-details', {gender: this.gender, name}]);
+    this.router.navigate(['product-details', {gender: this.gender, category: this.category, name}]);
   }
 }
