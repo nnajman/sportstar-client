@@ -7,3 +7,16 @@ a:hover {
     text-decoration: none;
     cursor: pointer;
 }
+
+.navigation {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.navigation > * {
+    margin-right: 2%;
+}
+
+.line {
+    margin-top: 0;
+}

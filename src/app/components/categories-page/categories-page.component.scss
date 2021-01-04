@@ -1,0 +1,15 @@
+.page-container {
+    overflow: hidden;
+}
+
+.categories-container {
+    position: absolute;
+    top: calc(50% - 90px);
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.category {
+    cursor: pointer;
+}

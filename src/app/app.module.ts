@@ -17,6 +17,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductsPageComponent } from './components/products-page/products-page.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductDetailsPageComponent } from './components/product-details-page/product-details-page.component';
+import { CategoriesPageComponent } from './components/categories-page/categories-page.component';
+import { CategoryComponent } from './components/category/category.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ProductDetailsPageComponent } from './components/product-details-page/p
     HomePageComponent,
     ProductsPageComponent,
     ProductComponent,
-    ProductDetailsPageComponent
+    ProductDetailsPageComponent,
+    CategoriesPageComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
