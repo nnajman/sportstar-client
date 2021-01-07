@@ -18,6 +18,8 @@ import { ProductsPageComponent } from './components/products-page/products-page.
 import { ProductComponent } from './components/product/product.component';
 import { ProductDetailsPageComponent } from './components/product-details-page/product-details-page.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { CategoriesPageComponent } from './components/categories-page/categories-page.component';
+import { CategoryComponent } from './components/category/category.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     ProductsPageComponent,
     ProductComponent,
     ProductDetailsPageComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    CategoriesPageComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
