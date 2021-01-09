@@ -1,7 +1,7 @@
-<div class="product-img-container col-xs-3 col-sm-3 col-lg-3">
+<div class="product-img-container col-xs-2 col-sm-2 col-lg-2">
     <img class="product-img" src="{{product.imageUrl}}">
 </div>
-<div class="details col-xs-9 col-sm-9 col-lg-9">
+<div class="details col-xs-7 col-sm-7 col-lg-7">
     <div class="price spacing">{{product.price}} ILS</div>
     <div class="description spacing">{{product.name}}</div>
     <div class="edit-container spacing">
@@ -18,4 +18,7 @@
             <mat-option value="option3">5</mat-option>
         </mat-select>
     </div>
+</div>
+<div class="col-xs-2 col-sm-2 col-lg-2">
+    <i class="fas fa-times close-button" (click)="removeProduct()"></i>
 </div>

@@ -8,8 +8,7 @@
                 </div>
                 <hr>
                 <div class="product row" *ngFor="let product of shoppingCartService.getProductsInBag()">
-                    <bag-product [product]="product"></bag-product>
-                    <hr>
+                    <bag-product [product]="product" (remove)="removeProduct(product)"></bag-product>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3">
