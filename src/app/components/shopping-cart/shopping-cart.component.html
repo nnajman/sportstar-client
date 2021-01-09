@@ -1,60 +1,15 @@
 <div class="shopping-cart">
     <div class="container-fluid">
-        <div class="row">
+        <div *ngIf="shoppingCartService.getProductsCount(); else emptyBag" class="row">
             <div class="col-xs-0 col-sm-0 col-lg-2"></div>
             <div class="col-xs-12 col-sm-8 col-lg-5 products">
                 <div class="title">
                     MY BAG
                 </div>
                 <hr>
-                <div class="product row">
-                    <div class="product-img-container col-xs-3 col-sm-3 col-lg-3">
-                        <img class="product-img" src="https://images.asos-media.com/products/adidas-running-1-4-zip-top-in-black-and-grey/21288082-1-black?$n_750w$&wid=714&fit=constrain">
-                    </div>
-                    <div class="details col-xs-9 col-sm-9 col-lg-9">
-                        <div class="price spacing">50$</div>
-                        <div class="description spacing">Motel milk maid crop top with ruched bust in sand leopard Motel milk maid crop top with ruched bust in sand leopard</div>
-                        <div class="edit-container spacing">
-                            <mat-select class="product-size">
-                                <mat-option value="option1">Option 1</mat-option>
-                                <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
-                                <mat-option value="option3">Option 3</mat-option>
-                            </mat-select>
-                            <mat-select class="product-size">
-                                <mat-option value="option1">1</mat-option>
-                                <mat-option value="option2">2</mat-option>
-                                <mat-option value="option3">3</mat-option>
-                                <mat-option value="option2">4</mat-option>
-                                <mat-option value="option3">5</mat-option>
-                            </mat-select>
-                        </div>
-                    </div>
+                <div class="product row" *ngFor="let product of shoppingCartService.getProductsInBag()">
+                    <bag-product [product]="product" (remove)="removeProduct(product)"></bag-product>
                 </div>
-                <hr>
-                <div class="product row">
-                    <div class="product-img-container col-xs-3 col-sm-3 col-lg-3">
-                        <img class="product-img" src="https://images.asos-media.com/products/adidas-running-1-4-zip-top-in-black-and-grey/21288082-1-black?$n_750w$&wid=714&fit=constrain">
-                    </div>
-                    <div class="details col-xs-9 col-sm-9 col-lg-9">
-                        <div class="price spacing">50$</div>
-                        <div class="description spacing">Motel milk maid crop top with ruched bust in sand leopard Motel milk maid crop top with ruched bust in sand leopard</div>
-                        <div class="edit-container spacing">
-                            <mat-select class="product-size">
-                                <mat-option value="option1">Option 1</mat-option>
-                                <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
-                                <mat-option value="option3">Option 3</mat-option>
-                            </mat-select>
-                            <mat-select class="product-size">
-                                <mat-option value="option1">1</mat-option>
-                                <mat-option value="option2">2</mat-option>
-                                <mat-option value="option3">3</mat-option>
-                                <mat-option value="option2">4</mat-option>
-                                <mat-option value="option3">5</mat-option>
-                            </mat-select>
-                        </div>
-                    </div>
-                </div>
-                <hr>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3">
                 <div class="fixed col-xs-12 col-sm-4 col-lg-3 total">
@@ -62,26 +17,48 @@
                         TOTAL
                     </div>
                     <hr>
-                    <div class="row  cart-total-title">
-                        <div class=" col-xs-9 col-sm-9 col-lg-9">
+                    <div class="row cart-total-title">
+                        <div class="column col-xs-9 col-sm-9 col-lg-7">
                             Sub-total
                         </div>
-                        <div class="col-xs-3 col-sm-3 col-lg-3">
-                            50$
+                        <div class="value col-xs-3 col-sm-3 col-lg-5">
+                            {{shoppingCartService.getBagPrice() | number: '1.2-2'}} ILS
                         </div>
-                    </div> 
-                    <div class="row  cart-total-title">
-                        <div class="col-xs-9 col-sm-9 col-lg-9">
+                    </div>
+                    <div class="column row cart-total-title">
+                        <div class="col-xs-9 col-sm-9 col-lg-7">
                             Quantity of products
                         </div>
-                        <div class="col-xs-3 col-sm-3 col-lg-3">
-                            1
+                        <div class="value col-xs-3 col-sm-3 col-lg-5">
+                            {{shoppingCartService.getProductsCount()}}
                         </div>
-                    </div> 
-                    <button type="button" class="btn btn-success checkout-button">Checkout</button>
+                    </div>
+                    <div class="checkout-button-container row cart-total-title">
+                        <button type="button" class="btn btn-success checkout-button">Checkout</button>
+                    </div>
+                    <div class="row cart-total-title">
+                        <div class="col-xs-9 col-sm-9 col-lg-7" style="margin-bottom: 3%">
+                            <span>WE ACCEPT:</span>
+                        </div>
+                        <img class="col-xs-9 col-sm-9 col-lg-7 payments-image"
+                            src="https://assets.asosservices.com/asos-finance/images/marketing/single.png">
+                    </div>
                 </div>
             </div>
             <div class="col-xs-0 col-sm-0 col-lg-2"></div>
         </div>
+
+        <ng-template #emptyBag>
+            <div class="empty-bag-container">
+                <div class="text-container">
+                    <div>
+                        <i class="fas fa-shopping-bag bag"></i>
+                    </div>
+                    <div>
+                        <h1>Your bag is empty</h1>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
     </div>
 </div>
