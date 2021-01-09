@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-details-page',
@@ -9,16 +11,24 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductDetailsPageComponent implements OnInit {
   public gender: string = '';
   public category: string = ''
-  public name: string = '';
+  public product: any;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,
+              private snackBar: MatSnackBar,
+              public shoppingCartService: ShoppingCartService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.gender = params.gender;
       this.category = params.category;
-      this.name = params.name;
+      this.product = JSON.parse(params.product);
     });
   }
 
+  public addToBag(product: any) {
+    this.shoppingCartService.addToBag(product);
+    this.snackBar.open('Item has been added to the cart', undefined, {
+      duration: 3000
+    });
+  }
 }

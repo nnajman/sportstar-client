@@ -20,6 +20,8 @@ import { ProductDetailsPageComponent } from './components/product-details-page/p
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { CategoriesPageComponent } from './components/categories-page/categories-page.component';
 import { CategoryComponent } from './components/category/category.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { BagProductComponent } from './components/bag-product/bag-product.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { CategoryComponent } from './components/category/category.component';
     ProductDetailsPageComponent,
     ShoppingCartComponent,
     CategoriesPageComponent,
-    CategoryComponent
+    CategoryComponent,
+    BagProductComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { CategoryComponent } from './components/category/category.component';
     MatListModule,
     MatButtonModule,
     FlexLayoutModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

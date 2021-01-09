@@ -1,0 +1,44 @@
+.product-img-container{
+    height: 140px;
+    width: 110px;
+}
+
+.product-img{
+    height: 140px;
+    width: 110px;
+}
+
+.details{
+    margin-left: 25px;
+}
+
+.description{
+    letter-spacing: .3px;
+    font-family: futura-pt-n7,futura-pt,"Futura PT","Futura Book",Tahoma,Geneva,Verdana,Arial,sans-serif;
+}
+
+.price{
+    font-size: 1.15em;
+    font-family: futura-pt-n7,futura-pt,"Futura PT","Futura Book",Tahoma,Geneva,Verdana,Arial,sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+}
+
+.spacing{
+    margin: 15px;
+}
+
+.edit-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.product-size{
+    width: 17%;
+}
+
+.product-quantity{
+    width: 7%;
+}

@@ -76,6 +76,14 @@
     outline: none;
 }
 
+.shopping-bag-count {
+    position: absolute;
+    right: 44%;
+    color: black;
+    font-size: 12px;
+    top: 4px;
+}
+
 mat-sidenav {
     width: 250px;
 }

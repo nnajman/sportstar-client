@@ -9,7 +9,6 @@
     <hr class="line">
     <div class="row">
         <product class="col-xs-6 col-sm-4 col-lg-3 product" *ngFor="let product of products" 
-            (click)="productClicked(product.name)"
-            [imageUrl]="product.imageUrl" [name]="product.name" [price]="product.price"></product>
+            (click)="productClicked(product)" [product]="product"></product>
     </div>
 </div>

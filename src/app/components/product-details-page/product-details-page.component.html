@@ -6,18 +6,18 @@
         <span style="font-size: 12px;" aria-hidden="true">></span>
         <a style="color: black;" routerLink="/products" [queryParams]="{gender: gender, category: category}">{{category}}</a>
         <span style="font-size: 12px;" aria-hidden="true">></span>
-        <span style="color: #999;">{{name}}</span>
+        <span style="color: #999;">{{product.name}}</span>
     </div>
     <hr class="line">
     <div class="product-container">
         <img class="product-image"
-            src="https://images.asos-media.com/products/adidas-running-1-4-zip-top-in-black-and-grey/21288082-1-black?$n_750w$&wid=714&fit=constrain">
+            src="{{product.imageUrl}}">
         <div class="product-details">
             <div class="product-name-container">
-                <span>{{name}}</span>
+                <span>{{product.name}}</span>
             </div>
             <div class="product-price-container">
-                <span>315.00 ILS</span>
+                <span>{{product.price}} ILS</span>
             </div>
             <div class="product-color-container">
                 <span><b>COLOR:  </b></span>
@@ -35,7 +35,7 @@
                   </mat-form-field>
             </div>
             <div class="add-item">
-                <button class="add-item-button">Add to bag</button>
+                <button (click)="addToBag(product)" class="add-item-button">Add to bag</button>
             </div>
         </div>
     </div>

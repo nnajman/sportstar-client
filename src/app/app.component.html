@@ -11,6 +11,9 @@
     <div class="shopping-bag-container">
       <a class="shopping-bag" routerLink="/shopping-cart" mat-button>
         <i class="fas fa-shopping-bag"></i>
+        <span *ngIf="shoppingCartService.getProductsCount()" class="shopping-bag-count">
+          {{shoppingCartService.getProductsCount()}}
+        </span>
       </a>
     </div>
   </mat-toolbar>
