@@ -5,17 +5,17 @@
     <div class="price spacing">{{product.price}} ILS</div>
     <div class="description spacing">{{product.name}}</div>
     <div class="edit-container spacing">
-        <mat-select class="product-size">
-            <mat-option value="option1">Option 1</mat-option>
-            <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
-            <mat-option value="option3">Option 3</mat-option>
+        <mat-select class="product-size" value="M">
+            <mat-option value="XS">XS</mat-option>
+            <mat-option value="S">S</mat-option>
+            <mat-option value="M">M</mat-option>
+            <mat-option value="L">L</mat-option>
+            <mat-option value="XL">XL</mat-option>
+            <mat-option value="XXL">XXL</mat-option>
         </mat-select>
-        <mat-select class="product-quantity">
-            <mat-option value="option1">1</mat-option>
-            <mat-option value="option2">2</mat-option>
-            <mat-option value="option3">3</mat-option>
-            <mat-option value="option2">4</mat-option>
-            <mat-option value="option3">5</mat-option>
+        <span>Qty</span>
+        <mat-select (selectionChange)="quantityChanged($event.value)" class="product-quantity" value="1">
+            <mat-option *ngFor="let x of [1,2,3,4,5,6,7,8,9,10]" value="{{x}}">{{x}}</mat-option>
         </mat-select>
     </div>
 </div>

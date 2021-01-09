@@ -14,11 +14,23 @@ export class ShoppingCartService {
 
   public getProductsInBag(): Array<any> { return this.productsInBag; }
 
-  public getProductsCount(): number { return this.productsInBag.length; }
+  public getProductsCount(): number { 
+    let count = 0;
+
+    this.productsInBag.forEach(product => {
+      count += product.qty;
+    });
+
+    return count;
+  }
 
   public getBagPrice(): number {
-    return this.productsInBag.map(product => product.price).reduce(
-      (a, b) => a + b, 0
-    );
+    let sum = 0;
+
+    this.productsInBag.forEach(product => {
+      sum += product.qty * product.price;
+    });
+    
+    return sum;
   }
 }
