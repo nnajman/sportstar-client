@@ -14,7 +14,7 @@
             <mat-option value="XXL">XXL</mat-option>
         </mat-select>
         <span>Qty</span>
-        <mat-select (selectionChange)="quantityChanged($event.value)" class="product-quantity" value="1">
+        <mat-select (selectionChange)="quantityChanged($event.value)" class="product-quantity" value="{{product.qty}}">
             <mat-option *ngFor="let x of [1,2,3,4,5,6,7,8,9,10]" value="{{x}}">{{x}}</mat-option>
         </mat-select>
     </div>
