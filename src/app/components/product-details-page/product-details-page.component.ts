@@ -26,7 +26,7 @@ export class ProductDetailsPageComponent implements OnInit {
   }
 
   public addToBag(product: any) {
-    this.shoppingCartService.addToBag(product);
+    this.shoppingCartService.addToBag({...product, qty: 1});
     this.snackBar.open('Item has been added to the cart', undefined, {
       duration: 3000
     });

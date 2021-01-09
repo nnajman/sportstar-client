@@ -20,4 +20,7 @@ export class BagProductComponent implements OnInit {
     this.removeEvent.emit(this.product);
   }
 
+  public quantityChanged(qty: string) {
+    this.product.qty = +qty;
+  }
 }
