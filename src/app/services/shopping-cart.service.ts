@@ -40,9 +40,18 @@ export class ShoppingCartService {
     return sum;
   }
 
-  public updateProduct(product: any) {
+  public removeProduct(product: any) {
     this.productsInBag.splice(this.productsInBag.indexOf(product), 1);
-    this.addToBag(product);
+  }
+
+  public productSizeChanged(product: any) {
+    product.qty = this.productsInBag.filter(p => p.name === product.name && p.size === product.size)
+                                     .map(p => p.qty)
+                                     .reduce((a, b) => a + b, 0);
+
+    this.productsInBag = this.productsInBag.filter(p => (p.name !== product.name) ||
+      (p.name === product.name && p.size !== product.size));
+    this.productsInBag.push(product);
   }
 
   private getProductInBag(product: any): any {

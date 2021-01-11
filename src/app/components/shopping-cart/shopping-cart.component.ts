@@ -15,11 +15,10 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   public removeProduct(product: any) {
-    const products = this.shoppingCartService.getProductsInBag();
-    products.splice(products.indexOf(product), 1);
+    this.shoppingCartService.removeProduct(product);
   }
 
   public productSizeChanged(product: any) {
-    this.shoppingCartService.updateProduct(product);
+    this.shoppingCartService.productSizeChanged(product);
   }
 }
