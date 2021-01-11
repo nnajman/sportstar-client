@@ -4,14 +4,14 @@
         <span style="font-size: 12px;" aria-hidden="true">></span>
         <a style="color: black;" routerLink="/{{gender}}">{{gender}}</a>
         <span style="font-size: 12px;" aria-hidden="true">></span>
-        <a style="color: black;" routerLink="/products" [queryParams]="{gender: gender, category: category}">{{category}}</a>
+        <a style="color: black;" routerLink="/products"
+            [queryParams]="{gender: gender, category: category}">{{category}}</a>
         <span style="font-size: 12px;" aria-hidden="true">></span>
         <span style="color: #999;">{{product.name}}</span>
     </div>
     <hr class="line">
     <div class="product-container">
-        <img class="product-image"
-            src="{{product.imageUrl}}">
+        <img class="product-image" src="{{product.imageUrl}}">
         <div class="product-details">
             <div class="product-name-container">
                 <span>{{product.name}}</span>
@@ -20,23 +20,29 @@
                 <span>{{product.price}} ILS</span>
             </div>
             <div class="product-color-container">
-                <span><b>COLOR:  </b></span>
+                <span><b>COLOR: </b></span>
                 <span>Black</span>
             </div>
-            <div class="product-size-container">
-                <span class="size-text">SIZE:</span>
-                <mat-form-field appearance="fill" class="size-select">
-                    <mat-label>Choose an option</mat-label>
-                    <mat-select>
-                      <mat-option value="option1">Option 1</mat-option>
-                      <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
-                      <mat-option value="option3">Option 3</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-            </div>
-            <div class="add-item">
-                <button (click)="addToBag(product)" class="add-item-button">Add to bag</button>
-            </div>
+            <form [formGroup]="addItemForm" (ngSubmit)="addToBag()" #f="ngForm">
+                <div class="product-size-container">
+                    <span class="size-text">SIZE:</span>
+                    <mat-form-field appearance="fill" class="size-select">
+                        <mat-label>Choose a size</mat-label>
+                        <mat-select formControlName="size">
+                            <mat-option value="XS">XS</mat-option>
+                            <mat-option value="S">S</mat-option>
+                            <mat-option value="M">M</mat-option>
+                            <mat-option value="L">L</mat-option>
+                            <mat-option value="XL">XL</mat-option>
+                            <mat-option value="XXL">XXL</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="add-item">
+                    <button [disabled]="f.form.invalid" type="submit" class="add-item-button"
+                            [ngClass]="{'button-disabled': f.form.invalid === true}">Add to bag</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
