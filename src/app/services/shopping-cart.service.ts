@@ -18,9 +18,9 @@ export class ShoppingCartService {
     }
   }
 
-  public getProductsInBag(): Array<any> { return this.productsInBag; }
+  public getBagProducts(): Array<any> { return this.productsInBag; }
 
-  public getProductsCount(): number { 
+  public getBagTotalQunatity(): number { 
     let count = 0;
 
     this.productsInBag.forEach(product => {
