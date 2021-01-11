@@ -1,13 +1,13 @@
 <div class="shopping-cart">
     <div class="container-fluid">
-        <div *ngIf="shoppingCartService.getProductsCount(); else emptyBag" class="row">
+        <div *ngIf="shoppingCartService.getBagTotalQunatity(); else emptyBag" class="row">
             <div class="col-xs-0 col-sm-0 col-lg-2"></div>
             <div class="col-xs-12 col-sm-8 col-lg-5 products">
                 <div class="title">
                     MY BAG
                 </div>
                 <hr>
-                <div class="product row" *ngFor="let product of shoppingCartService.getProductsInBag()">
+                <div class="product row" *ngFor="let product of shoppingCartService.getBagProducts()">
                     <bag-product [product]="product" 
                                  (remove)="removeProduct(product)"
                                  (sizeChanged)="productSizeChanged(product)"></bag-product>
@@ -32,7 +32,7 @@
                             Quantity of products
                         </div>
                         <div class="value col-xs-3 col-sm-3 col-lg-5">
-                            {{shoppingCartService.getProductsCount()}}
+                            {{shoppingCartService.getBagTotalQunatity()}}
                         </div>
                     </div>
                     <div class="checkout-button-container row cart-total-title">
