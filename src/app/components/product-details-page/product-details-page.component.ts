@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-product-details-page',
@@ -12,8 +13,10 @@ export class ProductDetailsPageComponent implements OnInit {
   public gender: string = '';
   public category: string = ''
   public product: any;
+  public addItemForm!: FormGroup;
 
-  constructor(private route: ActivatedRoute,
+  constructor(private fb: FormBuilder,
+              private route: ActivatedRoute,
               private snackBar: MatSnackBar,
               public shoppingCartService: ShoppingCartService) { }
 
@@ -23,10 +26,14 @@ export class ProductDetailsPageComponent implements OnInit {
       this.category = params.category;
       this.product = JSON.parse(params.product);
     });
+
+    this.addItemForm = this.fb.group({
+      size: ['', Validators.required]
+    });
   }
 
-  public addToBag(product: any) {
-    this.shoppingCartService.addToBag({...product, qty: 1});
+  public addToBag() {
+    this.shoppingCartService.addToBag({...this.product, qty: 1, size: this.addItemForm.value.size});
     this.snackBar.open('Item has been added to the cart', undefined, {
       duration: 3000
     });

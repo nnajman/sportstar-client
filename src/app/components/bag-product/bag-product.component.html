@@ -5,7 +5,7 @@
     <div class="price spacing">{{product.price}} ILS</div>
     <div class="description spacing">{{product.name}}</div>
     <div class="edit-container spacing">
-        <mat-select class="product-size" value="M">
+        <mat-select (selectionChange)="sizeChanged($event.value)" class="product-size" value="{{product.size}}">
             <mat-option value="XS">XS</mat-option>
             <mat-option value="S">S</mat-option>
             <mat-option value="M">M</mat-option>

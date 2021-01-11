@@ -18,4 +18,8 @@ export class ShoppingCartComponent implements OnInit {
     const products = this.shoppingCartService.getProductsInBag();
     products.splice(products.indexOf(product), 1);
   }
+
+  public productSizeChanged(product: any) {
+    this.shoppingCartService.updateProduct(product);
+  }
 }

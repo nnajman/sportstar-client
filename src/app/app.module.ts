@@ -22,6 +22,7 @@ import { CategoriesPageComponent } from './components/categories-page/categories
 import { CategoryComponent } from './components/category/category.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { BagProductComponent } from './components/bag-product/bag-product.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { BagProductComponent } from './components/bag-product/bag-product.compon
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     MatToolbarModule,

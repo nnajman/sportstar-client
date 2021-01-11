@@ -74,3 +74,12 @@
 .add-item-button:hover {
     background-color: #018849cb
 }
+
+.button-disabled {
+    background-color: gainsboro;
+    cursor: auto;
+}
+
+.button-disabled:hover {
+    background-color: gainsboro;
+}
