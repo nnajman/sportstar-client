@@ -9,7 +9,13 @@ export class ShoppingCartService {
   constructor() { }
 
   public addToBag(product: any) {
-    this.productsInBag.push(product);
+    const productInBag = this.getProductInBag(product);
+    
+    if (!productInBag) {
+      this.productsInBag.push(product);
+    } else {
+      productInBag.qty += product.qty;
+    }
   }
 
   public getProductsInBag(): Array<any> { return this.productsInBag; }
@@ -32,5 +38,14 @@ export class ShoppingCartService {
     });
     
     return sum;
+  }
+
+  public updateProduct(product: any) {
+    this.productsInBag.splice(this.productsInBag.indexOf(product), 1);
+    this.addToBag(product);
+  }
+
+  private getProductInBag(product: any): any {
+    return this.productsInBag.find(p => p.name === product.name && p.size === product.size);
   }
 }
