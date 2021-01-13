@@ -45,13 +45,19 @@ export class ShoppingCartService {
   }
 
   public productSizeChanged(product: any) {
-    product.qty = this.productsInBag.filter(p => p.name === product.name && p.size === product.size)
-                                     .map(p => p.qty)
-                                     .reduce((a, b) => a + b, 0);
+    const totalQunatity = this.productsInBag.filter(p => p.name === product.name && p.size === product.size)
+                                            .map(p => p.qty)
+                                            .reduce((a, b) => a + b, 0);
 
-    this.productsInBag = this.productsInBag.filter(p => (p.name !== product.name) ||
-      (p.name === product.name && p.size !== product.size));
-    this.productsInBag.push(product);
+    const p = 
+      this.productsInBag.find(p => product.name === p.name && product.size === p.size && p !== product);
+
+    if (p) {
+      p.qty = totalQunatity;
+      this.productsInBag.splice(this.productsInBag.indexOf(product), 1);
+    } else {
+      product.qty = totalQunatity;
+    }
   }
 
   private getProductInBag(product: any): any {
