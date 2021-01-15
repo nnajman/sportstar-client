@@ -1,7 +1,7 @@
 <div class="page-container">
-    <img class="background" src='{{background}}'>
+    <img class="background" src='http://localhost:8080/uploads/backgrounds/{{gender}}.jpg'>
     <div class="categories-container">
-        <category *ngFor="let category of categories | async" class="category" (click)="categoryClicked(category.title)"
+        <category *ngFor="let category of categoriesService.get(gender) | async" class="category" (click)="categoryClicked(category.title)"
             [category]="category"></category>
     </div>
 </div>
