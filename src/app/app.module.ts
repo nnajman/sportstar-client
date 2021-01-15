@@ -23,6 +23,7 @@ import { CategoryComponent } from './components/category/category.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { BagProductComponent } from './components/bag-product/bag-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatToolbarModule,
     MatSelectModule,
     MatSidenavModule,
+    NgxSliderModule,
     MatListModule,
     MatButtonModule,
     FlexLayoutModule,

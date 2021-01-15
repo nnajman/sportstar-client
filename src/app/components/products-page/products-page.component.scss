@@ -16,6 +16,29 @@
     margin-top: 0;
 }
 
+.search-container {
+    background-color: #eee;
+    margin-bottom: 2%;
+    text-align: center;
+}
+
+.close-button {
+    font-size: 10px;
+    position: relative;
+    right: 4%;
+    cursor: pointer;
+}
+
+.slider-container {
+    position: relative;
+    top: 12px;
+}
+
+.price-slider {
+    position: relative;
+    bottom: 21px;
+}
+
 .product {
     text-align: center;
     margin-bottom: 5%;
