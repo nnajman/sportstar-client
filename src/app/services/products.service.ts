@@ -11,9 +11,10 @@ export class ProductsService {
 
   constructor(private http: HttpClient) { }
 
-  public get(): Observable<Array<Product>> {
+  public get(gender: string, categoryTitle: string): Observable<Array<Product>> {
     return this.http.get('http://localhost:8080/products').pipe(
-        map((data: any) => data.products)
+        map((data: any) => data.products.filter((product: Product) => product.category.gender === gender && 
+                                                                      product.category.title === categoryTitle))
     );
   }
 }
