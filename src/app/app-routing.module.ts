@@ -8,11 +8,10 @@ import { CategoriesPageComponent } from './components/categories-page/categories
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
-  // { path: 'Men', component: ProductsPageComponent, data: {gender: 'Men'} },
   { path: 'Men', component: CategoriesPageComponent, data: {gender: 'Men'} },
   { path: 'Women', component: CategoriesPageComponent, data: {gender: 'Women'} },
-  { path: 'products', component: ProductsPageComponent },
-  { path: 'product-details', component: ProductDetailsPageComponent },
+  { path: ':gender/:category', component: ProductsPageComponent },
+  { path: ':gender/:category/:product', component: ProductDetailsPageComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent },
 ];
 

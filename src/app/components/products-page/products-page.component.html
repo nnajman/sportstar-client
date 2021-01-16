@@ -6,9 +6,45 @@
         <span style="font-size: 12px;" aria-hidden="true">></span>
         <span style="color: #999;">{{category}}</span>
     </div>
-    <hr class="line">
+    <!-- <hr class="line"> -->
+    <div class="row search-container">
+        <div class="col-lg-4">
+            <i *ngIf="brand.value?.length" class="fas fa-times close-button" (click)="brand.value=[]"></i>
+            <mat-form-field>
+                <mat-label>Brand</mat-label>
+                <mat-select #brand multiple>
+                    <mat-option value="adidas">Adidas</mat-option>
+                    <mat-option value="asos">Asos</mat-option>
+                    <mat-option value="nike">Nike</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-lg-4">
+            <i *ngIf="size.value?.length" class="fas fa-times close-button" (click)="size.value=[]"></i>
+            <mat-form-field>
+                <mat-label>Size</mat-label>
+                <mat-select #size multiple>
+                    <mat-option value="XS">XS</mat-option>
+                    <mat-option value="S">S</mat-option>
+                    <mat-option value="M">M</mat-option>
+                    <mat-option value="L">L</mat-option>
+                    <mat-option value="XL">XL</mat-option>
+                    <mat-option value="XXL">XXL</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-lg-4 slider-container">
+            <button *ngIf="!isSlider" mat-raised-button (click)="isSlider=true">Price Range</button>
+            <i style="float: left;" *ngIf="isSlider" class="fas fa-times close-button" (click)="isSlider=false"></i>
+            <ngx-slider *ngIf="isSlider" class="price-slider" [(value)]="value" 
+                        [(highValue)]="highValue" [options]="options"></ngx-slider>
+        </div>
+    </div>
+
     <div class="row">
-        <product class="col-xs-6 col-sm-4 col-lg-3 product" *ngFor="let product of products" 
+        <product class="col-xs-6 col-sm-4 col-lg-3 product" *ngFor="let product of products$ | async"
             (click)="productClicked(product)" [product]="product"></product>
     </div>
 </div>

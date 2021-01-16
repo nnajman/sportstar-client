@@ -6,8 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
-  @Input('name') name = '';
-  @Input('imageUrl') imageUrl = '';
+  @Input('category') category: any;
 
   constructor() { }
 
