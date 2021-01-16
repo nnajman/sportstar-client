@@ -21,9 +21,10 @@ export class ProductDetailsPageComponent implements OnInit {
               public shoppingCartService: ShoppingCartService) { }
 
   ngOnInit(): void {
+    this.gender = this.route.snapshot.paramMap.get('gender') ?? '';
+    this.category = this.route.snapshot.paramMap.get('category') ?? '';
+
     this.route.params.subscribe(params => {
-      this.gender = params.gender;
-      this.category = params.category;
       this.product = JSON.parse(params.product);
     });
 

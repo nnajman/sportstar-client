@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { Observable } from 'rxjs';
+import { Category } from 'src/app/models/category';
 
 @Component({
   selector: 'app-categories-page',
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class CategoriesPageComponent implements OnInit {
   public gender: string = "";
-  public categories!: Observable<Array<any>>;
+  public categories$!: Observable<Array<Category>>;
 
   constructor(private route: ActivatedRoute,
     public categoriesService: CategoriesService,
@@ -19,11 +20,11 @@ export class CategoriesPageComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe(data => {
       this.gender = data.gender;
-      this.categories = this.categoriesService.get(this.gender);
+      this.categories$ = this.categoriesService.get(this.gender);
     });
   }
 
   public categoryClicked(category: string) {
-    this.router.navigate(['products'], {queryParams: { gender: this.gender, category} });
+    this.router.navigate([`${this.gender}/${category}`]);
   }
 }

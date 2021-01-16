@@ -44,7 +44,7 @@
     </div>
 
     <div class="row">
-        <product class="col-xs-6 col-sm-4 col-lg-3 product" *ngFor="let product of products"
+        <product class="col-xs-6 col-sm-4 col-lg-3 product" *ngFor="let product of products$ | async"
             (click)="productClicked(product)" [product]="product"></product>
     </div>
 </div>

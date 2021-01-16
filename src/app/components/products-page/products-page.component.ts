@@ -1,8 +1,9 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Options } from '@angular-slider/ngx-slider';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ProductsService } from 'src/app/services/products.service';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-products-page',
@@ -21,29 +22,25 @@ export class ProductsPageComponent implements OnInit {
   public value: number = 40;
   public highValue: number = 60;
   public isSlider = false;
+  public products$!: Observable<Array<Product>>;
 
-  public products = [{ name: 'adidas Originals Handball Spezial trainers in blue with gum sole', price: 315.00, imageUrl: 'https://images.asos-media.com/products/adidas-running-1-4-zip-top-in-black-and-grey/21288082-1-black?$n_750w$&wid=714&fit=constrain' },
-  { name: 'New Look hoodie with applique 1998 detail', price: 96.30, imageUrl: 'https://images.asos-media.com/products/new-look-hoodie-with-applique-1998-detail/21174339-1-grey?$n_750w$&wid=714&fit=constrain' },
-  { name: 'Topman sweat with Los Angeles print in black', price: 104.70, imageUrl: 'https://images.asos-media.com/products/topman-sweat-with-los-angeles-print-in-black/21251321-1-black?$n_750w$&wid=714&fit=constrain' },
-  { name: 'Nike Jordan Jumpman large logo t-shirt in white', price: 98.14, imageUrl: 'https://images.asos-media.com/products/nike-jordan-jumpman-large-logo-t-shirt-in-white/21094085-1-white?$n_750w$&wid=714&fit=constrain' },
-  { name: 'Vans jacket in black', price: 445.00, imageUrl: 'https://images.asos-media.com/products/topman-sweat-with-los-angeles-print-in-black/21251321-1-black?$n_750w$&wid=714&fit=constrain' },
-  { name: 'Vans checker 66 short sleeve tshirt in red', price: 85.00, imageUrl: 'https://images.asos-media.com/products/vans-checker-66-short-sleeve-tshirt-in-red/23203593-1-cardinal?$n_750w$&wid=714&fit=constrain' },
-  { name: 'Night addict stay awake logo t-shirt in white', price: 55.00, imageUrl: 'https://images.asos-media.com/products/night-addict-stay-awake-logo-t-shirt-in-white/22110028-1-white?$n_750w$&wid=714&fit=constrain' },
-  { name: 'Jack & Jones crew neck pullover in burgundy', price: 150.00, imageUrl: 'https://images.asos-media.com/products/jack-jones-crew-neck-pullover-in-burgundy/22917482-1-portroyale?$n_750w$&wid=714&fit=constrain' }];
+  // public products = [{ name: 'adidas Originals Handball Spezial trainers in blue with gum sole', price: 315.00, imageUrl: 'https://images.asos-media.com/products/adidas-running-1-4-zip-top-in-black-and-grey/21288082-1-black?$n_750w$&wid=714&fit=constrain' },
+  // { name: 'New Look hoodie with applique 1998 detail', price: 96.30, imageUrl: 'https://images.asos-media.com/products/new-look-hoodie-with-applique-1998-detail/21174339-1-grey?$n_750w$&wid=714&fit=constrain' },
+  // { name: 'Topman sweat with Los Angeles print in black', price: 104.70, imageUrl: 'https://images.asos-media.com/products/topman-sweat-with-los-angeles-print-in-black/21251321-1-black?$n_750w$&wid=714&fit=constrain' },
+  // { name: 'Nike Jordan Jumpman large logo t-shirt in white', price: 98.14, imageUrl: 'https://images.asos-media.com/products/nike-jordan-jumpman-large-logo-t-shirt-in-white/21094085-1-white?$n_750w$&wid=714&fit=constrain' },
+  // { name: 'Vans jacket in black', price: 445.00, imageUrl: 'https://images.asos-media.com/products/topman-sweat-with-los-angeles-print-in-black/21251321-1-black?$n_750w$&wid=714&fit=constrain' },
+  // { name: 'Vans checker 66 short sleeve tshirt in red', price: 85.00, imageUrl: 'https://images.asos-media.com/products/vans-checker-66-short-sleeve-tshirt-in-red/23203593-1-cardinal?$n_750w$&wid=714&fit=constrain' },
+  // { name: 'Night addict stay awake logo t-shirt in white', price: 55.00, imageUrl: 'https://images.asos-media.com/products/night-addict-stay-awake-logo-t-shirt-in-white/22110028-1-white?$n_750w$&wid=714&fit=constrain' },
+  // { name: 'Jack & Jones crew neck pullover in burgundy', price: 150.00, imageUrl: 'https://images.asos-media.com/products/jack-jones-crew-neck-pullover-in-burgundy/22917482-1-portroyale?$n_750w$&wid=714&fit=constrain' }];
 
-  constructor(private http: HttpClient,
+  constructor(private productsService: ProductsService,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.gender = params.gender;
-      this.category = params.category;
-    });
-
-    this.http.get('http://localhost:8080/categories').subscribe(data => {
-      console.log(data);
-    });
+    this.gender = this.route.snapshot.paramMap.get('gender') ?? '';
+    this.category = this.route.snapshot.paramMap.get('category') ?? '';
+    this.products$ = this.productsService.get();
   };
 
   @HostListener('window:scroll', ['$event']) // for window scroll events
@@ -62,8 +59,6 @@ export class ProductsPageComponent implements OnInit {
   }
 
   public productClicked(product: any) {
-    this.router.navigate(['product-details', { gender: this.gender, 
-                                               category: this.category,
-                                               product: JSON.stringify(product) }]);
+    this.router.navigate([`${this.gender}/${this.category}/${product.name}`, { product: JSON.stringify(product) }]);
   }
 }
