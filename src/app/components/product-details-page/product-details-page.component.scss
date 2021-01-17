@@ -16,19 +16,9 @@
     margin-top: 0;
 }
 
-.product-container {
-    display: flex;
-}
 
 .product-image {
-    height: 500px;
-    width: 400px;
-    margin-left: 20%;
-}
-
-.product-details {
-    margin-left: 3%;
-    width: 25%
+    width: 100%;
 }
 
 .product-name-container {
@@ -87,4 +77,14 @@
 
 .button-disabled:hover {
     background-color: gainsboro;
+}
+
+@media screen and (max-width: 720px) {
+    .product-image-container {
+        width: 100%;
+    }
+
+    .product-details {
+        width: 100%;
+    }
 }
