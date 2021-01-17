@@ -42,3 +42,9 @@
     margin-bottom: 5%;
     cursor: pointer;
 }
+
+@media screen and (max-width: 720px) {
+    .search-field {
+        width: 100%;
+    }
+}
