@@ -1,24 +1,28 @@
-<div class="product-img-container col-xs-2 col-sm-2 col-lg-2">
-    <img class="product-img" src="http://localhost:8080/{{product.image}}">
-</div>
-<div class="details col-xs-7 col-sm-7 col-lg-7">
-    <div class="price spacing">{{product.price}} ILS</div>
-    <div class="description spacing">{{product.name}}</div>
-    <div class="edit-container spacing">
-        <mat-select (selectionChange)="sizeChanged($event.value)" class="product-size" value="{{product.size}}">
-            <mat-option value="XS">XS</mat-option>
-            <mat-option value="S">S</mat-option>
-            <mat-option value="M">M</mat-option>
-            <mat-option value="L">L</mat-option>
-            <mat-option value="XL">XL</mat-option>
-            <mat-option value="XXL">XXL</mat-option>
-        </mat-select>
-        <span>Qty</span>
-        <mat-select (selectionChange)="quantityChanged($event.value)" class="product-quantity" value="{{product.qty}}">
-            <mat-option *ngFor="let x of [1,2,3,4,5,6,7,8,9,10]" value="{{x}}">{{x}}</mat-option>
-        </mat-select>
+<div class="row">
+    <div class="col-xs-0.5 col-sm-0.5 col-md-0.5 col-lg-0.5"></div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <img class="product-img" src="http://localhost:8080/{{product.image}}">
     </div>
-</div>
-<div class="col-xs-2 col-sm-2 col-lg-2">
-    <i class="fas fa-times close-button" (click)="removeProduct()"></i>
+    <div class="details col-xs-7 col-sm-7 col-md-7 col-lg-7"> 
+        <div class="price spacing">{{product.price}} ILS</div>
+        <div class="description spacing">{{product.name}}</div>
+        <div class="edit-container spacing">
+            <mat-select (selectionChange)="sizeChanged($event.value)" class="product-size" value="{{product.size}}">
+                <mat-option value="XS">XS</mat-option>
+                <mat-option value="S">S</mat-option>
+                <mat-option value="M">M</mat-option>
+                <mat-option value="L">L</mat-option>
+                <mat-option value="XL">XL</mat-option>
+                <mat-option value="XXL">XXL</mat-option>
+            </mat-select>
+            <span>Qty</span>
+            <mat-select (selectionChange)="quantityChanged($event.value)" class="product-quantity"
+                value="{{product.qty}}">
+                <mat-option *ngFor="let x of [1,2,3,4,5,6,7,8,9,10]" value="{{x}}">{{x}}</mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+        <i class="fas fa-times close-button" (click)="removeProduct()"></i>
+    </div>
 </div>

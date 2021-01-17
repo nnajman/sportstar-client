@@ -1,53 +1,50 @@
 <div class="shopping-cart">
     <div class="container-fluid">
         <div *ngIf="shoppingCartService.getBagTotalQunatity(); else emptyBag" class="row">
-            <div class="col-xs-0 col-sm-0 col-lg-2"></div>
-            <div class="col-xs-12 col-sm-8 col-lg-5 products">
+            <div class="col-sm-0 col-md-1 col-lg-2"></div>
+            <div class="col-sm-7 col-md-6 col-lg-5 products">
                 <div class="title">
                     MY BAG
                 </div>
                 <hr>
-                <div class="product row" *ngFor="let product of shoppingCartService.getBagProducts()">
-                    <bag-product [product]="product" 
-                                 (remove)="removeProduct(product)"
-                                 (sizeChanged)="productSizeChanged(product)"></bag-product>
+                <div class="product" *ngFor="let product of shoppingCartService.getBagProducts()">
+                    <bag-product [product]="product" (remove)="removeProduct(product)"
+                        (sizeChanged)="productSizeChanged(product)"></bag-product>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-4 col-lg-3">
-                <div class="fixed col-xs-12 col-sm-4 col-lg-3 total">
-                    <div class="title">
-                        TOTAL
+            <div class="col-sm-4 col-md-4 col-lg-3 total">
+                <div class="title">
+                    TOTAL
+                </div>
+                <hr>
+                <div class="row cart-total-title">
+                    <div class="column col-xs-9 col-sm-9 col-lg-7">
+                        Sub-total
                     </div>
-                    <hr>
-                    <div class="row cart-total-title">
-                        <div class="column col-xs-9 col-sm-9 col-lg-7">
-                            Sub-total
-                        </div>
-                        <div class="value col-xs-3 col-sm-3 col-lg-5">
-                            {{shoppingCartService.getBagPrice() | number: '1.2-2'}} ILS
-                        </div>
-                    </div>
-                    <div class="column row cart-total-title">
-                        <div class="col-xs-9 col-sm-9 col-lg-7">
-                            Quantity of products
-                        </div>
-                        <div class="value col-xs-3 col-sm-3 col-lg-5">
-                            {{shoppingCartService.getBagTotalQunatity()}}
-                        </div>
-                    </div>
-                    <div class="checkout-button-container row cart-total-title">
-                        <button type="button" class="btn btn-success checkout-button">Checkout</button>
-                    </div>
-                    <div class="row cart-total-title">
-                        <div class="col-xs-9 col-sm-9 col-lg-7" style="margin-bottom: 3%">
-                            <span>WE ACCEPT:</span>
-                        </div>
-                        <img class="col-xs-9 col-sm-9 col-lg-7 payments-image"
-                            src="https://assets.asosservices.com/asos-finance/images/marketing/single.png">
+                    <div class="value col-xs-3 col-sm-3 col-lg-5">
+                        {{shoppingCartService.getBagPrice() | number: '1.2-2'}} ILS
                     </div>
                 </div>
+                <div class="column row cart-total-title">
+                    <div class="col-xs-9 col-sm-9 col-lg-7">
+                        Quantity of products
+                    </div>
+                    <div class="value col-xs-3 col-sm-3 col-lg-5">
+                        {{shoppingCartService.getBagTotalQunatity()}}
+                    </div>
+                </div>
+                <div class="checkout-button-container row cart-total-title">
+                    <button type="button" class="btn btn-success checkout-button">Checkout</button>
+                </div>
+                <div class="row cart-total-title">
+                    <div class="col-xs-9 col-sm-9 col-lg-7" style="margin-bottom: 3%">
+                        <span>WE ACCEPT:</span>
+                    </div>
+                    <img class="col-xs-9 col-sm-9 col-lg-7 payments-image"
+                        src="https://assets.asosservices.com/asos-finance/images/marketing/single.png">
+                </div>
             </div>
-            <div class="col-xs-0 col-sm-0 col-lg-2"></div>
+            <div class="col-sm-0 col-md-1 col-lg-2"></div>
         </div>
 
         <ng-template #emptyBag>
