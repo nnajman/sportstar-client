@@ -8,7 +8,7 @@
     </div>
     <!-- <hr class="line"> -->
     <div class="row search-container">
-        <div class="col-xs-12 col-md-4 col-lg-4">
+        <div class="col-sm-4 col-md-4 col-lg-4 search-field">
             <i *ngIf="brand.value?.length" class="fas fa-times close-button" (click)="brand.value=[]"></i>
             <mat-form-field>
                 <mat-label>Brand</mat-label>
@@ -20,7 +20,7 @@
             </mat-form-field>
         </div>
 
-        <div class="col-xs-12 col-md-4 col-lg-4">
+        <div class="col-sm-4 col-md-4 col-lg-4 search-field">
             <i *ngIf="size.value?.length" class="fas fa-times close-button" (click)="size.value=[]"></i>
             <mat-form-field>
                 <mat-label>Size</mat-label>
@@ -35,7 +35,7 @@
             </mat-form-field>
         </div>
 
-        <div class="col-xs-12 col-md-4 col-lg-4">
+        <div class="col-sm-4 col-md-4 col-lg-4 search-field">
             <button class="price-button" *ngIf="!isSlider" mat-raised-button (click)="isSlider=true">Price Range</button>
             <i *ngIf="isSlider" class="fas fa-times close-button" (click)="isSlider=false"></i>
             <ngx-slider *ngIf="isSlider" class="price-slider" [(value)]="value" 
