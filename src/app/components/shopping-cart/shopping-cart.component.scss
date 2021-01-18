@@ -3,7 +3,6 @@
     position: relative;
     width: 100%;
     min-height: 700px;
-    overflow: auto;
 }
 
 .products{
@@ -34,6 +33,7 @@
     background-color: white;
     margin-top: 10px;
     position: sticky;
+    top: 0; // Sara
 }
 
 .cart-total-title{
@@ -70,6 +70,11 @@
     font-size: 25px;
 }
 
+.sum{
+    position: sticky !important;
+    top: 0px;
+}
+
 @media screen and (max-width: 900px) {
     .total {
         width: 100%;
@@ -79,3 +84,4 @@
         width: 100%;
     }
 }
+

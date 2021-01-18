@@ -92,3 +92,11 @@ mat-sidenav {
     font-size: 25px;
     height: 50px;
 }
+
+.mat-drawer-container{
+    overflow: visible !important;
+}
+
+::ng-deep.mat-drawer-content{
+    overflow: visible !important;
+}
