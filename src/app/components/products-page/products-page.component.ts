@@ -4,6 +4,7 @@ import { Options } from '@angular-slider/ngx-slider';
 import { Observable } from 'rxjs';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/models/product';
+import { Category } from 'src/app/models/category';
 
 @Component({
   selector: 'app-products-page',
@@ -12,8 +13,8 @@ import { Product } from 'src/app/models/product';
 })
 export class ProductsPageComponent implements OnInit {
 
-  public gender: string = "";
-  public categoryTitle: string = "";
+  public category!: Category;
+  public products$!: Observable<Array<Product>>;
   private currScrollPos = 0;
   public options: Options = {
     floor: 0,
@@ -22,16 +23,19 @@ export class ProductsPageComponent implements OnInit {
   public value: number = 40;
   public highValue: number = 60;
   public isSlider = false;
-  public products$!: Observable<Array<Product>>;
 
   constructor(private productsService: ProductsService,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.gender = this.route.snapshot.paramMap.get('gender') ?? '';
-    this.categoryTitle = this.route.snapshot.paramMap.get('category') ?? '';
-    this.products$ = this.productsService.get(this.gender, this.categoryTitle);
+    this.route.queryParams.subscribe(data => {
+      console.log(data);
+    });
+    this.route.params.subscribe(data => {
+      this.category = JSON.parse(data.category);
+      this.products$ = this.productsService.get(this.category);
+    });
   };
 
   @HostListener('window:scroll', ['$event']) // for window scroll events
@@ -49,7 +53,7 @@ export class ProductsPageComponent implements OnInit {
     this.currScrollPos = pos;
   }
 
-  public productClicked(product: any) {
-    this.router.navigate([`${this.gender}/${this.categoryTitle}/${product.name}`, { product: JSON.stringify(product) }]);
+  public productClicked(product: Product) {
+    this.router.navigate([`${this.category.gender}/${this.category.title}/${product.name}`, { product: JSON.stringify(product) }]);
   }
 }

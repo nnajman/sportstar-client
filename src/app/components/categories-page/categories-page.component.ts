@@ -24,7 +24,7 @@ export class CategoriesPageComponent implements OnInit {
     });
   }
 
-  public categoryClicked(category: string) {
-    this.router.navigate([`${this.gender}/${category}`]);
+  public categoryClicked(category: Category) {
+    this.router.navigate([`${this.gender}/${category.title}`, {category: JSON.stringify(category)}]);
   }
 }

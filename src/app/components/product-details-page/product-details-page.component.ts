@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-product-details-page',
@@ -10,20 +11,16 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./product-details-page.component.scss']
 })
 export class ProductDetailsPageComponent implements OnInit {
-  public gender: string = '';
-  public category: string = ''
-  public product: any;
+  public product!: Product;
   public addItemForm!: FormGroup;
 
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
+              private router: Router,
               private snackBar: MatSnackBar,
               public shoppingCartService: ShoppingCartService) { }
 
   ngOnInit(): void {
-    this.gender = this.route.snapshot.paramMap.get('gender') ?? '';
-    this.category = this.route.snapshot.paramMap.get('category') ?? '';
-
     this.route.params.subscribe(params => {
       this.product = JSON.parse(params.product);
     });
@@ -38,5 +35,10 @@ export class ProductDetailsPageComponent implements OnInit {
     this.snackBar.open('Item has been added to the cart', undefined, {
       duration: 3000
     });
+  }
+
+  public navigateToProductsPage() {
+    this.router.navigate([`${this.product.category.gender}/${this.product.category.title}`, 
+      { category: JSON.stringify(this.product.category)}])
   }
 }
