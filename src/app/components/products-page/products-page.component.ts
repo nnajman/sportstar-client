@@ -11,9 +11,9 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./products-page.component.scss']
 })
 export class ProductsPageComponent implements OnInit {
-
-  public gender: string = "";
-  public categoryTitle: string = "";
+  public gender!: string;
+  public categoryTitle!: string;
+  public products$!: Observable<Array<Product>>;
   private currScrollPos = 0;
   public options: Options = {
     floor: 0,
@@ -22,7 +22,6 @@ export class ProductsPageComponent implements OnInit {
   public value: number = 40;
   public highValue: number = 60;
   public isSlider = false;
-  public products$!: Observable<Array<Product>>;
 
   constructor(private productsService: ProductsService,
     private route: ActivatedRoute,
@@ -31,7 +30,8 @@ export class ProductsPageComponent implements OnInit {
   ngOnInit(): void {
     this.gender = this.route.snapshot.paramMap.get('gender') ?? '';
     this.categoryTitle = this.route.snapshot.paramMap.get('category') ?? '';
-    this.products$ = this.productsService.get(this.gender, this.categoryTitle);
+    const categoryId = this.route.snapshot.paramMap.get('categoryId') ?? '';
+    this.products$ = this.productsService.getProducts(categoryId);
   };
 
   @HostListener('window:scroll', ['$event']) // for window scroll events
@@ -49,7 +49,7 @@ export class ProductsPageComponent implements OnInit {
     this.currScrollPos = pos;
   }
 
-  public productClicked(product: any) {
-    this.router.navigate([`${this.gender}/${this.categoryTitle}/${product.name}`, { product: JSON.stringify(product) }]);
+  public productClicked(product: Product) {
+    this.router.navigate([`/product/${product._id}`]);
   }
 }

@@ -1,10 +1,10 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="product$ | async; let product">
     <div class="navigation">
         <a style="color: black;" routerLink="/">Home</a>
         <span style="font-size: 12px;" aria-hidden="true">></span>
-        <a style="color: black;" routerLink="/{{gender}}">{{gender}}</a>
+        <a style="color: black;" routerLink="/{{product.category.gender}}">{{product.category.gender}}</a>
         <span style="font-size: 12px;" aria-hidden="true">></span>
-        <a style="color: black;" routerLink="/{{gender}}/{{category}}">{{category}}</a>
+        <a style="color: black;" routerLink="/{{product.category.gender}}/{{product.category.title}}/{{product.category._id}}">{{product.category.title}}</a>
         <span style="font-size: 12px;" aria-hidden="true">></span>
         <span style="color: #999;">{{product.name}}</span>
     </div>
