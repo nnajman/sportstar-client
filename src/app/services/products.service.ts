@@ -11,13 +11,19 @@ export class ProductsService {
 
   constructor(private http: HttpClient) { }
 
-  public get(category: Category) {
+  public getProducts(categoryId: string) {
     return this.http.get<Array<Product>>('http://localhost:8080/products', {
       params: {
-        categoryId: category._id
+        categoryId
       }
     }).pipe(
       map((data: any) => data.products)
+    );
+  }
+
+  public getProduct(id: string) {
+    return this.http.get<Product>(`http://localhost:8080/products/${id}`).pipe(
+      map((data: any) => data.product)
     );
   }
 }

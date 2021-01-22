@@ -15,16 +15,16 @@ export class CategoriesPageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     public categoriesService: CategoriesService,
-    private router: Router) { }
+    private router: Router) {
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    }
 
   ngOnInit(): void {
-    this.route.data.subscribe(data => {
-      this.gender = data.gender;
-      this.categories$ = this.categoriesService.get(this.gender);
-    });
+    this.gender = this.route.snapshot.paramMap.get('gender') ?? '';
+    this.categories$ = this.categoriesService.getCategories(this.gender);
   }
 
   public categoryClicked(category: Category) {
-    this.router.navigate([`${this.gender}/${category.title}`, {category: JSON.stringify(category)}]);
+    this.router.navigate([`${this.gender}/${category.title}/${category._id}`]);
   }
 }

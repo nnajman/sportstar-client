@@ -4,6 +4,9 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Product } from 'src/app/models/product';
+import { ProductsService } from 'src/app/services/products.service';
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-details-page',
@@ -11,19 +14,18 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./product-details-page.component.scss']
 })
 export class ProductDetailsPageComponent implements OnInit {
-  public product!: Product;
+  public product$!: Observable<Product>;
   public addItemForm!: FormGroup;
 
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
               private router: Router,
               private snackBar: MatSnackBar,
+              private productsService: ProductsService,
               public shoppingCartService: ShoppingCartService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.product = JSON.parse(params.product);
-    });
+    this.product$ = this.productsService.getProduct(this.route.snapshot.paramMap.get('productId') ?? '');
 
     this.addItemForm = this.fb.group({
       size: ['', Validators.required]
@@ -31,14 +33,17 @@ export class ProductDetailsPageComponent implements OnInit {
   }
 
   public addToBag() {
-    this.shoppingCartService.addToBag({...this.product, qty: 1, size: this.addItemForm.value.size});
-    this.snackBar.open('Item has been added to the cart', undefined, {
-      duration: 3000
+    this.product$.subscribe(product => {
+      this.shoppingCartService.addToBag({...product, qty: 1, size: this.addItemForm.value.size});
+      this.snackBar.open('Item has been added to the cart', undefined, {
+        duration: 3000
+      });
     });
   }
 
   public navigateToProductsPage() {
-    this.router.navigate([`${this.product.category.gender}/${this.product.category.title}`, 
-      { category: JSON.stringify(this.product.category)}])
+    this.product$.subscribe((product: Product) => {
+      this.router.navigate([`${product.category.gender}/${product.category.title}/${product.category._id}`]);
+    });
   }
 }

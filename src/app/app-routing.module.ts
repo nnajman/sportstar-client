@@ -8,11 +8,10 @@ import { CategoriesPageComponent } from './components/categories-page/categories
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
-  { path: 'Men', component: CategoriesPageComponent, data: {gender: 'Men'} },
-  { path: 'Women', component: CategoriesPageComponent, data: {gender: 'Women'} },
-  { path: ':gender/:category', component: ProductsPageComponent },
-  { path: ':gender/:category/:product', component: ProductDetailsPageComponent },
-  { path: 'shopping-cart', component: ShoppingCartComponent },
+  { path: 'bag', component: ShoppingCartComponent },
+  { path: ':gender', component: CategoriesPageComponent },
+  { path: ':gender/:category/:categoryId', component: ProductsPageComponent },
+  { path: 'product/:productId', component: ProductDetailsPageComponent },
 ];
 
 @NgModule({

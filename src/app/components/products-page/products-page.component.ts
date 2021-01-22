@@ -4,7 +4,6 @@ import { Options } from '@angular-slider/ngx-slider';
 import { Observable } from 'rxjs';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/models/product';
-import { Category } from 'src/app/models/category';
 
 @Component({
   selector: 'app-products-page',
@@ -12,8 +11,8 @@ import { Category } from 'src/app/models/category';
   styleUrls: ['./products-page.component.scss']
 })
 export class ProductsPageComponent implements OnInit {
-
-  public category!: Category;
+  public gender!: string;
+  public categoryTitle!: string;
   public products$!: Observable<Array<Product>>;
   private currScrollPos = 0;
   public options: Options = {
@@ -29,13 +28,10 @@ export class ProductsPageComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(data => {
-      console.log(data);
-    });
-    this.route.params.subscribe(data => {
-      this.category = JSON.parse(data.category);
-      this.products$ = this.productsService.get(this.category);
-    });
+    this.gender = this.route.snapshot.paramMap.get('gender') ?? '';
+    this.categoryTitle = this.route.snapshot.paramMap.get('category') ?? '';
+    const categoryId = this.route.snapshot.paramMap.get('categoryId') ?? '';
+    this.products$ = this.productsService.getProducts(categoryId);
   };
 
   @HostListener('window:scroll', ['$event']) // for window scroll events
@@ -54,6 +50,6 @@ export class ProductsPageComponent implements OnInit {
   }
 
   public productClicked(product: Product) {
-    this.router.navigate([`${this.category.gender}/${this.category.title}/${product.name}`, { product: JSON.stringify(product) }]);
+    this.router.navigate([`/product/${product._id}`]);
   }
 }
