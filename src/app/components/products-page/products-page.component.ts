@@ -17,6 +17,9 @@ export class ProductsPageComponent implements OnInit {
   public categoryTitle!: string;
   public products$!: Observable<Array<Product>>;
   public brands$!: Observable<Array<string>>;
+  public sizes$!: Observable<Array<string>>;
+  public minPrice!: number;
+  public maxPrice!: number;
   public filteredBrands!: Array<string>;
   public filteredSizes!: Array<string>;
   private currScrollPos = 0;
@@ -24,8 +27,6 @@ export class ProductsPageComponent implements OnInit {
     floor: 0,
     ceil: 100
   };
-  public minPrice!: number;
-  public maxPrice!: number;
   public isSlider = false;
 
   constructor(private productsService: ProductsService,
@@ -38,6 +39,7 @@ export class ProductsPageComponent implements OnInit {
     this.categoryId = this.route.snapshot.paramMap.get('categoryId') ?? '';
     this.products$ = this.productsService.getProducts(this.categoryId, null);
     this.brands$ = this.getBrands(this.products$);
+    this.sizes$ = this.getSizes(this.products$);
     this.getPricesRange(this.products$).subscribe(range => {
       this.minPrice = this.options.floor = range[0];
       this.maxPrice = this.options.ceil = range[1];
@@ -86,6 +88,10 @@ export class ProductsPageComponent implements OnInit {
     if (!this.filteredBrands?.length) {
       this.brands$ = this.getBrands(this.products$);
     }
+
+    if (!this.filteredSizes?.length) {
+      this.sizes$ = this.getSizes(this.products$);
+    }
   }
 
   public resetSlider() {
@@ -101,11 +107,19 @@ export class ProductsPageComponent implements OnInit {
     );
   }
 
-  private getPricesRange(products$: Observable<Array<Product>>) {
+  private getSizes(products$: Observable<Array<Product>>) {
+    return products$.pipe(
+      map((products: Array<Product>) => 
+        [...new Set(products.map((product: Product) => product.stock.map(stock => stock.size))
+        .reduce((total, currentValue) => total.concat(currentValue), []))])
+    );
+  }
+
+  private getPricesRange(products$: Observable<Array<Product>>): Observable<Array<number>> {
     return products$.pipe(
       map((products: Array<Product>) => products.map((product: Product) => product.price)),
       map((prices: Array<number>) => 
       [Math.min.apply(Math, prices), Math.max.apply(Math, prices)])
-    )
+    );
   }
 }
