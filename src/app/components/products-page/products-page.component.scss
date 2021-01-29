@@ -20,6 +20,9 @@
     background-color: #eee;
     margin-bottom: 2%;
     text-align: center;
+    position: sticky;
+    top: 64px;
+    z-index: 1000;
 }
 
 .close-button {

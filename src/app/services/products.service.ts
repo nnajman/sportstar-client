@@ -11,10 +11,11 @@ export class ProductsService {
 
   constructor(private http: HttpClient) { }
 
-  public getProducts(categoryId: string) {
+  public getProducts(categoryId: string, filterObj: any) {
     return this.http.get<Array<Product>>('http://localhost:8080/products', {
       params: {
-        categoryId
+        categoryId,
+        ...filterObj
       }
     }).pipe(
       map((data: any) => data.products)

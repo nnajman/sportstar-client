@@ -7,39 +7,37 @@
         <span style="color: #999;">{{categoryTitle}}</span>
     </div>
     <!-- <hr class="line"> -->
-    <div class="row search-container">
+    <div id="search-container" class="row search-container">
         <div class="col-sm-4 col-md-4 col-lg-4 search-field">
-            <i *ngIf="brand.value?.length" class="fas fa-times close-button" (click)="brand.value=[]"></i>
+            <i *ngIf="filteredBrands?.length" class="fas fa-times close-button"
+                (click)="filteredBrands=[]; filter()"></i>
             <mat-form-field>
                 <mat-label>Brand</mat-label>
-                <mat-select #brand multiple>
-                    <mat-option value="adidas">Adidas</mat-option>
-                    <mat-option value="asos">Asos</mat-option>
-                    <mat-option value="nike">Nike</mat-option>
+                <mat-select [(value)]="filteredBrands" multiple
+                    (valueChange)="filter()">
+                    <mat-option *ngFor="let brand of brands$ | async" value="{{brand}}">{{brand}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
 
         <div class="col-sm-4 col-md-4 col-lg-4 search-field">
-            <i *ngIf="size.value?.length" class="fas fa-times close-button" (click)="size.value=[]"></i>
+            <i *ngIf="filteredSizes?.length" class="fas fa-times close-button"
+                (click)="filteredSizes=[]; filter()"></i>
             <mat-form-field>
                 <mat-label>Size</mat-label>
-                <mat-select #size multiple>
-                    <mat-option value="XS">XS</mat-option>
-                    <mat-option value="S">S</mat-option>
-                    <mat-option value="M">M</mat-option>
-                    <mat-option value="L">L</mat-option>
-                    <mat-option value="XL">XL</mat-option>
-                    <mat-option value="XXL">XXL</mat-option>
+                <mat-select [(value)]="filteredSizes" multiple (valueChange)="filter()">
+                    <mat-option *ngFor="let size of sizes$ | async" value="{{size}}">{{size}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
 
         <div class="col-sm-4 col-md-4 col-lg-4 search-field">
-            <button class="price-button" *ngIf="!isSlider" mat-raised-button (click)="isSlider=true">Price Range</button>
-            <i *ngIf="isSlider" class="fas fa-times close-button" (click)="isSlider=false"></i>
-            <ngx-slider *ngIf="isSlider" class="price-slider" [(value)]="value" 
-                        [(highValue)]="highValue" [options]="options"></ngx-slider>
+            <button class="price-button" *ngIf="!isSlider" mat-raised-button (click)="isSlider=true">Price
+                Range</button>
+            <i *ngIf="isSlider" class="fas fa-times close-button" (click)="resetSlider()"></i>
+            <ngx-slider *ngIf="isSlider" class="price-slider" [(value)]="minPrice" [(highValue)]="maxPrice"
+                [options]="options" (userChangeEnd)="filter()">
+            </ngx-slider>
         </div>
     </div>
 
