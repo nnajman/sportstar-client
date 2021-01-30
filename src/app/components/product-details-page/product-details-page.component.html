@@ -31,12 +31,10 @@
                     <mat-form-field appearance="fill" class="size-select">
                         <mat-label>Choose a size</mat-label>
                         <mat-select formControlName="size">
-                            <mat-option value="XS">XS</mat-option>
-                            <mat-option value="S">S</mat-option>
-                            <mat-option value="M">M</mat-option>
-                            <mat-option value="L">L</mat-option>
-                            <mat-option value="XL">XL</mat-option>
-                            <mat-option value="XXL">XXL</mat-option>
+                            <mat-option *ngFor="let stock of product.stock" value="{{stock.size}}" 
+                            [disabled]="!stock.quantity">
+                                {{stock.size}}
+                            </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
