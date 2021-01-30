@@ -9,5 +9,5 @@ export class Product {
     price!: number;
     dateAdded!: Date;
     category!: Category;
-    stock!: Array<{ size: string, qunatity: number}>;
+    stock!: Array<{ size: string, quantity: number}>;
 }     

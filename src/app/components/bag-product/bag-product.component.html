@@ -8,12 +8,10 @@
         <div class="description spacing">{{product.name}}</div>
         <div class="edit-container spacing">
             <mat-select (selectionChange)="sizeChanged($event.value)" class="product-size" value="{{product.size}}">
-                <mat-option value="XS">XS</mat-option>
-                <mat-option value="S">S</mat-option>
-                <mat-option value="M">M</mat-option>
-                <mat-option value="L">L</mat-option>
-                <mat-option value="XL">XL</mat-option>
-                <mat-option value="XXL">XXL</mat-option>
+                <mat-option *ngFor="let stock of product.stock" value="{{stock.size}}" 
+                [disabled]="!stock.quantity">
+                    {{stock.size}}
+                </mat-option>
             </mat-select>
             <span>Qty</span>
             <mat-select (selectionChange)="quantityChanged($event.value)" class="product-quantity"
