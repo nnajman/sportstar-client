@@ -1,0 +1,38 @@
+<div class="page-container">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-0.5 col-sm-0.5 col-md-0 col-lg-2"></div>
+            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-5 delivery-container">
+                <div class="title">
+                    MY BAG
+                </div>
+                <hr>
+                <!-- <div class="product" *ngFor="let product of shoppingCartService.getBagProducts()">
+                    <bag-product [product]="product" (remove)="removeProduct(product)"
+                        (sizeChanged)="productSizeChanged(product)"></bag-product>
+                </div> -->
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-3 products-container">
+                <div class="title">
+                    {{shoppingCartService.getBagTotalQunatity()}} ITEMS
+                </div>
+                <hr>
+                <div class="products">
+                    <div class="product" *ngFor="let product of shoppingCartService.getBagProducts()">
+                        <checkout-product [product]="product"></checkout-product>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="column col-xs-9 col-sm-9 col-lg-7">
+                        TOTAL TO PAY
+                    </div>
+                    <div class="value col-xs-3 col-sm-3 col-lg-5">
+                        {{shoppingCartService.getBagPrice() | number: '1.2-2'}} ILS
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-0.5 col-sm-0.5 col-md-0 col-lg-2"></div>
+        </div>
+    </div>
+</div>

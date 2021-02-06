@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <img class="product-img" src="http://localhost:8080/{{product.image}}">
+    </div>
+    <div class="details col-xs-8 col-sm-8 col-md-8 col-lg-8"> 
+        <div class="bold">ILS{{product.price | number: '1.2-2'}}</div>
+        <div class="product-name">
+            <span>{{product.name | slice:0:55}}</span>
+            <span *ngIf="product.name.length > 55">...</span>
+        </div>
+        <div>
+            <span>Size:</span>
+            <span class="bold">   {{product.size}}</span>
+        </div>
+        <div>
+            <span>Qty:</span>
+            <span class="bold">   {{product.qty}}</span>
+        </div>
+    </div>
+</div>

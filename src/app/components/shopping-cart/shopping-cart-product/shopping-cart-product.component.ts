@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'bag-product',
-  templateUrl: './bag-product.component.html',
-  styleUrls: ['./bag-product.component.scss']
+  selector: 'shopping-cart-product',
+  templateUrl: './shopping-cart-product.component.html',
+  styleUrls: ['./shopping-cart-product.component.scss']
 })
-export class BagProductComponent implements OnInit {
+export class ShoppingCartProductComponent implements OnInit {
 
   @Input('product') product: any;
   @Output('remove') removeEvent = new EventEmitter<any>();

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
 @Component({
@@ -8,7 +9,8 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  constructor(public shoppingCartService: ShoppingCartService) { }
+  constructor(private router: Router,
+    public shoppingCartService: ShoppingCartService) { }
 
   ngOnInit(): void {
 
@@ -20,5 +22,9 @@ export class ShoppingCartComponent implements OnInit {
 
   public productSizeChanged(product: any) {
     this.shoppingCartService.productSizeChanged(product);
+  }
+
+  public checkout() {
+    this.router.navigate(['/checkout']);
   }
 }
