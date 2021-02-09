@@ -1,0 +1,99 @@
+.page-container{
+    background-color: #eee;
+    position: relative;
+    width: 100%;
+    min-height: 700px;
+}
+
+.delivery-container {
+    min-height: 140px;
+    background-color: white;
+    position: relative;
+    margin: 10px;
+    padding-bottom: 20px;
+}
+
+.title{
+    padding-top: 20px;
+    font-size: 1.15em;
+    font-family: futura-pt-n7,futura-pt,"Futura PT","Futura Book",Tahoma,Geneva,Verdana,Arial,sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    line-height: 2em;
+}
+
+.delivery-form {
+    width: 60%;
+}
+
+mat-form-field {
+    display: block;
+}
+
+.products-container {
+    background-color: white;
+    margin-top: 10px;
+    position: sticky;
+    top: 0; 
+}
+
+.products {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.product {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.order-button-container {
+    margin-left: 17%;
+    margin-top: 20px;
+}
+
+.order-button {
+    width: 50%;
+    height: 44px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-family: futura-pt-n7,futura-pt,"Futura PT","Futura Book",Tahoma,Geneva,Verdana,Arial,sans-serif;
+}
+
+@media screen and (max-width: 900px) {
+    .delivery-container {
+        width: 100%;
+    }
+
+    .products-container {
+        width: 100%;
+    }
+
+    .order-button-container {
+        margin-left: 0;
+    }
+    
+    .order-button {
+        width: 100%;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 10px;
+}
+   
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}

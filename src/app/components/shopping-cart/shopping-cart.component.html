@@ -8,8 +8,8 @@
                 </div>
                 <hr>
                 <div class="product" *ngFor="let product of shoppingCartService.getBagProducts()">
-                    <bag-product [product]="product" (remove)="removeProduct(product)"
-                        (sizeChanged)="productSizeChanged(product)"></bag-product>
+                    <shopping-cart-product [product]="product" (remove)="removeProduct(product)"
+                        (sizeChanged)="productSizeChanged(product)"></shopping-cart-product>
                 </div>
             </div>
             <div class="col-sm-4 col-md-4 col-lg-3 total">
@@ -34,7 +34,8 @@
                     </div>
                 </div>
                 <div class="checkout-button-container row cart-total-title">
-                    <button type="button" class="btn btn-success checkout-button">Checkout</button>
+                    <button type="button" class="btn btn-success checkout-button"
+                            (click)="checkout()">Checkout</button>
                 </div>
                 <div class="row cart-total-title">
                     <div class="col-xs-9 col-sm-9 col-lg-7" style="margin-bottom: 3%">
