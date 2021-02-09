@@ -5,8 +5,8 @@
     <div class="details col-xs-8 col-sm-8 col-md-8 col-lg-8"> 
         <div class="bold">ILS{{product.price | number: '1.2-2'}}</div>
         <div class="product-name">
-            <span>{{product.name | slice:0:55}}</span>
-            <span *ngIf="product.name.length > 55">...</span>
+            <span>{{product.name | slice:0:50}}</span>
+            <span *ngIf="product.name.length > 50">...</span>
         </div>
         <div>
             <span>Size:</span>

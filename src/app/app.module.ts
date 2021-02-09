@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatInputModule } from '@angular/material/input';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,6 +12,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatFormFieldModule } from "@angular/material/form-field";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -45,6 +47,7 @@ import { ShoppingCartProductComponent } from './components/shopping-cart/shoppin
     MatListModule,
     MatIconModule,
     BrowserModule,
+    MatInputModule,
     MatSelectModule,
     NgxSliderModule,
     MatButtonModule,
@@ -54,6 +57,7 @@ import { ShoppingCartProductComponent } from './components/shopping-cart/shoppin
     MatToolbarModule,
     FlexLayoutModule,
     MatSnackBarModule,
+    MatFormFieldModule,
     ReactiveFormsModule,
     BrowserAnimationsModule
   ],
