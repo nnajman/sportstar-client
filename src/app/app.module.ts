@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +29,8 @@ import { ProductDetailsPageComponent } from './components/product-details-page/p
 import { CheckoutProductComponent } from './components/checkout-page/checkout-product/checkout-product.component';
 import { ShoppingCartProductComponent } from './components/shopping-cart/shopping-cart-product/shopping-cart-product.component';
 
+const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,9 +47,11 @@ import { ShoppingCartProductComponent } from './components/shopping-cart/shoppin
     ShoppingCartProductComponent
   ],
   imports: [
+    FormsModule,
     MatListModule,
     MatIconModule,
     BrowserModule,
+    SocketIoModule.forRoot(config),
     MatInputModule,
     MatSelectModule,
     NgxSliderModule,
