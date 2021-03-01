@@ -1,0 +1,4 @@
+<div *ngIf="data$ | async; let data" class="graph-container">
+    <h1 class="graph-title">מספר המוצרים לכל מותג</h1>
+    <figure id="bar" [brandsCount]="data"></figure>
+</div>

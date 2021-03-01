@@ -28,6 +28,8 @@ import { CategoriesPageComponent } from './components/categories-page/categories
 import { ProductDetailsPageComponent } from './components/product-details-page/product-details-page.component';
 import { CheckoutProductComponent } from './components/checkout-page/checkout-product/checkout-product.component';
 import { ShoppingCartProductComponent } from './components/shopping-cart/shopping-cart-product/shopping-cart-product.component';
+import { BrandsCountDirective } from './directives/brands-count.directive';
+import { BarChartPageComponent } from './components/bar-chart-page/bar-chart-page.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
 
@@ -44,7 +46,9 @@ const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
     CheckoutProductComponent,
     CategoriesPageComponent,
     ProductDetailsPageComponent,
-    ShoppingCartProductComponent
+    ShoppingCartProductComponent,
+    BrandsCountDirective,
+    BarChartPageComponent
   ],
   imports: [
     FormsModule,

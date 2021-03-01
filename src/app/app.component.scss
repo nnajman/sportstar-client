@@ -52,11 +52,24 @@
     color: white;
 }
 
+.graph-container {
+    margin-left: auto;
+}
+
+.graph-button:hover {
+    outline: none;
+    color: white;
+}
+
+.graph-button:focus {
+    color: white;
+    outline: none;
+}
+
 .shopping-bag-container {
     height: 100%;
     display: flex;
     align-items: center;
-    margin-left: auto;
     cursor: pointer;
     text-decoration: none;
     outline: none;

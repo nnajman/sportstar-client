@@ -6,10 +6,12 @@ import { ProductDetailsPageComponent } from './components/product-details-page/p
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { CategoriesPageComponent } from './components/categories-page/categories-page.component';
 import { CheckoutPageComponent } from './components/checkout-page/checkout-page.component';
+import { BarChartPageComponent } from './components/bar-chart-page/bar-chart-page.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'shoppingCart', component: ShoppingCartComponent },
+  { path: 'barChart', component: BarChartPageComponent},
   { path: 'checkout', component: CheckoutPageComponent },
   { path: ':gender', component: CategoriesPageComponent },
   { path: ':gender/:category/:categoryId', component: ProductsPageComponent },
