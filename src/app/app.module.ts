@@ -11,7 +11,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
-import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,6 +29,8 @@ import { CheckoutProductComponent } from './components/checkout-page/checkout-pr
 import { ShoppingCartProductComponent } from './components/shopping-cart/shopping-cart-product/shopping-cart-product.component';
 import { BrandsCountDirective } from './directives/brands-count.directive';
 import { BarChartPageComponent } from './components/bar-chart-page/bar-chart-page.component';
+import { SocketIoConfig } from 'ngx-socket-io';
+import { SocketioService } from './socketio.service';
 
 const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
 
@@ -55,7 +56,6 @@ const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
     MatListModule,
     MatIconModule,
     BrowserModule,
-    SocketIoModule.forRoot(config),
     MatInputModule,
     MatSelectModule,
     NgxSliderModule,
@@ -70,7 +70,7 @@ const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
     ReactiveFormsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [SocketioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
