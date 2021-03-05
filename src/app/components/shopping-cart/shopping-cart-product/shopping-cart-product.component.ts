@@ -25,7 +25,7 @@ export class ShoppingCartProductComponent implements OnInit {
     this.sizeChangedEvent.emit(this.product);
   }
 
-  public quantityChanged(qty: string) {
-    this.product.qty = +qty;
+  public quantityChanged(quantity: string) {
+    this.product.quantity = +quantity;
   }
 }

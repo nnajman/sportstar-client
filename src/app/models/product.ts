@@ -8,6 +8,8 @@ export class Product {
     image!: string;
     price!: number;
     dateAdded!: Date;
+    quantity!: number;
+    size!: string;
     category!: Category;
     stock!: Array<{ size: string, quantity: number}>;
 }     

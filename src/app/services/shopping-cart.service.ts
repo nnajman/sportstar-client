@@ -14,7 +14,7 @@ export class ShoppingCartService {
     if (!productInBag) {
       this.productsInBag.push(product);
     } else {
-      productInBag.qty += product.qty;
+      productInBag.quantity += product.quantity;
     }
   }
 
@@ -24,7 +24,7 @@ export class ShoppingCartService {
     let count = 0;
 
     this.productsInBag.forEach(product => {
-      count += product.qty;
+      count += product.quantity;
     });
 
     return count;
@@ -34,7 +34,7 @@ export class ShoppingCartService {
     let sum = 0;
 
     this.productsInBag.forEach(product => {
-      sum += product.qty * product.price;
+      sum += product.quantity * product.price;
     });
     
     return sum;
@@ -46,17 +46,17 @@ export class ShoppingCartService {
 
   public productSizeChanged(product: any) {
     const totalQunatity = this.productsInBag.filter(p => p.name === product.name && p.size === product.size)
-                                            .map(p => p.qty)
+                                            .map(p => p.quantity)
                                             .reduce((a, b) => a + b, 0);
 
     const p = 
       this.productsInBag.find(p => product.name === p.name && product.size === p.size && p !== product);
 
     if (p) {
-      p.qty = totalQunatity;
+      p.quantity = totalQunatity;
       this.productsInBag.splice(this.productsInBag.indexOf(product), 1);
     } else {
-      product.qty = totalQunatity;
+      product.quantity = totalQunatity;
     }
   }
 

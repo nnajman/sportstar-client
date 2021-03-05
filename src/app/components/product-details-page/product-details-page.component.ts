@@ -33,7 +33,7 @@ export class ProductDetailsPageComponent implements OnInit {
 
   public addToBag() {
     this.product$.subscribe(product => {
-      this.shoppingCartService.addToBag({...product, qty: 1, size: this.addItemForm.value.size});
+      this.shoppingCartService.addToBag({...product, quantity: 1, size: this.addItemForm.value.size});
       this.snackBar.open('Item has been added to the cart', undefined, {
         duration: 3000
       });

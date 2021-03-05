@@ -29,10 +29,7 @@ import { CheckoutProductComponent } from './components/checkout-page/checkout-pr
 import { ShoppingCartProductComponent } from './components/shopping-cart/shopping-cart-product/shopping-cart-product.component';
 import { BrandsCountDirective } from './directives/brands-count.directive';
 import { BarChartPageComponent } from './components/bar-chart-page/bar-chart-page.component';
-import { SocketIoConfig } from 'ngx-socket-io';
-import { SocketioService } from './socketio.service';
-
-const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
+import { SocketioService } from './services/socketio.service';
 
 @NgModule({
   declarations: [

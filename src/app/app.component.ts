@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
+import { SocketioService } from './services/socketio.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
-import { SocketioService } from './socketio.service';
 
 @Component({
   selector: 'app-root',

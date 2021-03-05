@@ -7,7 +7,7 @@
                     DELIVERY ADDRESS
                 </div>
                 <hr>
-                <form class="delivery-form" [formGroup]="deliveryForm" (ngSubmit)="order()" #f="ngForm">
+                <form class="delivery-form" [formGroup]="deliveryForm" #f="ngForm">
                     <mat-form-field appearance="outline">
                         <mat-label>First Name :</mat-label>
                         <input type="text" matInput formControlName="firstName">
@@ -22,7 +22,7 @@
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>Mobile :</mat-label>
-                        <input type="text" matInput formControlName="mobile">
+                        <input type="text" matInput formControlName="phoneNumber">
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>Email :</mat-label>
@@ -53,7 +53,7 @@
             <div class="col-xs-0.5 col-sm-0.5 col-md-0 col-lg-2"></div>
         </div>
         <div class="order-button-container">
-            <button [disabled]="f.form.invalid" type="button" class="btn btn-success order-button">
+            <button [disabled]="f.form.invalid" type="button" (click)="order()" class="btn btn-success order-button">
                 PLACE ORDER
             </button>
         </div>
