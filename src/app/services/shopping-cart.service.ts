@@ -60,6 +60,10 @@ export class ShoppingCartService {
     }
   }
 
+  public resetBag() {
+    this.productsInBag.splice(0, this.productsInBag.length);
+  }
+
   private getProductInBag(product: any): any {
     return this.productsInBag.find(p => p.name === product.name && p.size === product.size);
   }
