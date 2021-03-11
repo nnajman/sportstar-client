@@ -12,7 +12,8 @@
     <div class="product-container row">
         <div class="col-sm-2 col-md-2 col-lg-2"></div>
         <div class="col-sm-5 col-md-5 col-lg-5 product-image-container">
-            <img class="product-image" src="http://localhost:8080/{{product.image}}">
+            <img *ngIf="product.image.includes('https')" class="product-image" src="{{product.image}}">
+            <img *ngIf="!product.image.includes('https')" class="product-image" src="http://localhost:8080/{{product.image}}">
         </div>
         <div class="col-sm-3 col-md-3 col-lg-3 product-details">
             <div class="product-name-container">

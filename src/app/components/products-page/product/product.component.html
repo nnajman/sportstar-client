@@ -1,4 +1,5 @@
-<img class="product-image" src="http://localhost:8080/{{product.image}}">
+<img *ngIf="product.image.includes('https')" class="product-image" src="{{product.image}}">
+<img *ngIf="!product.image.includes('https')" class="product-image" src="http://localhost:8080/{{product.image}}">
 <div class="product-description">
     <p>{{product.name}}</p>
 </div>
