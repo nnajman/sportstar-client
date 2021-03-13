@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-xs-0.5 col-sm-0.5 col-md-0.5 col-lg-0.5"></div>
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-        <img *ngIf="product.image.includes('https')" class="product-image" src="{{product.image}}">
-        <img *ngIf="!product.image.includes('https')" class="product-image" src="http://localhost:8080/{{product.image}}">
+        <img *ngIf="product.image.includes('https')" class="product-img" src="{{product.image}}">
+        <img *ngIf="!product.image.includes('https')" class="product-img" src="http://localhost:8080/{{product.image}}">
     </div>
     <div class="details col-xs-7 col-sm-7 col-md-7 col-lg-7"> 
         <div class="price spacing">{{product.price}} ILS</div>
